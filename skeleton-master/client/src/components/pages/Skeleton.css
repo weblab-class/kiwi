@@ -1,1 +1,14 @@
 /* Fill me in :) */
+.main {
+  margin-left: 240px; /* Same as the width of the sidebar */
+  padding: 50px 50px;
+  background-color: rgb(255, 255, 255);
+}
+
+.Icon-container{
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
-
+import SideBar from "./modules/SideBar.js";
 import "../utilities.css";
 
+import "./App.css";
 import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
@@ -12,7 +13,8 @@ import { get, post } from "../utilities";
 /**
  * Define the "App" component
  */
-const App = () => {
+
+ const App = () => {
   const [userId, setUserId] = useState(undefined);
 
   useEffect(() => {
@@ -40,8 +42,10 @@ const App = () => {
 
   return (
     <>
+    <SideBar />
+    
       <Router>
-        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+        <Skeleton path="/dashboard" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <NotFound default />
       </Router>
     </>

@@ -1,0 +1,62 @@
+.SideBar-container {
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-top: 20px;
+}
+
+.SideBar-title {
+  color: var(--white);
+  font-size: 20px;
+}
+
+.SideBar-linkContainer {
+  margin-left: var(--left);
+  height: 100%;
+  width: 150px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 40px;
+  overflow: hidden;
+}
+.SideBar-linkContainer a {
+  padding: 16px 8px 16px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+}
+
+.SideBar-linkContainer a:hover {
+  color: #f1f1f1;
+}
+
+.SideBar-link,
+.SideBar-link:visited {
+  color: var(--white);
+  opacity: 0.6;
+  text-decoration: none;
+  display: inline-block;
+  text-align: left;
+}
+
+.SideBar-link:hover {
+  opacity: 0.8;
+}
+
+.SideBar-link.SideBar-login {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: red;
+  overflow: hidden;
+}
