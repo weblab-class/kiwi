@@ -42,6 +42,29 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 
+router.get("/user", (req, res) => {
+  User.findById(req.query.userId).then((user) => {
+    //console.log(user);
+    res.send(user);
+  });
+});
+
+router.post("/bio", auth.ensureLoggedIn, (req, res) => {
+  console.log(`Received a chat message from ${req.user.name}: ${req.body.value}`);
+  User.findById(req.user._id).then((user) => {
+    user.bio  = req.body.value;
+    user.save();
+  })
+})
+
+
+router.get("/bio", auth.ensureLoggedIn, (req, res) => {
+  User.findById(req.user._id).then((user) => {
+    res.send(user.bio)
+  })
+})
+
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
@@ -49,3 +72,4 @@ router.all("*", (req, res) => {
 });
 
 module.exports = router;
+
