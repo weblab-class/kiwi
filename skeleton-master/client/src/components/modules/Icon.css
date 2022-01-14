@@ -1,6 +1,7 @@
 .Icon-container {
-  width: 400px;
-  height: 500px;
+  margin:-50px;
+  position: relative;
+
 }
 img {
   width: 200px;
