@@ -33,7 +33,7 @@ class Skeleton extends Component {
     8 Core 
 
     */
-    const icons_total = [2,0,0,0,0,0,0,0,0]; // Progress state (1-4)
+    const icons_total = [4,4,4,4,4,4,4,4,4]; // Progress state (1-4)
     const index = (0,1,2,3,4,5,6,7,8,9);
     let icons = []
     let icons_index = [];
