@@ -22,7 +22,7 @@ import eye1 from '../../public/eye1.gif';
 import eye2 from '../../public/eye2.gif';
 import eye3 from '../../public/eye3.gif';
 import eye4 from '../../public/eye4.gif';
-import leg1 from '../../public/legs1.gif';
+import leg1 from '../../public/leg1.gif';
 import leg2 from '../../public/leg2.gif';
 import leg3 from '../../public/leg3.gif';
 import leg4 from '../../public/leg4.gif';
