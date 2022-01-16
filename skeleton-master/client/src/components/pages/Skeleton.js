@@ -19,30 +19,74 @@ class Skeleton extends Component {
     //get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }));
   }
   render (){
+    // Have 3 arrays (2,1,3), empty icon (0)
+    
+    /* 
+    0 hand
+    1 Lung (aerobic)
+    2 Heart (cardio)
+    3 Brain (meditation, mental health, studying)
+    4 Plant (miscellaneous)
+    5 Eyes (screen time)
+    6 Legs 
+    7 Biceps 
+    8 Core 
+
+    */
+    const icons_total = [2,2,2,2,2,2,2,2,2];
+    let icons = []
+    let icon_col1 = [0,0,0];
+    let icon_col2 = [0,0,0];
+    let icon_col3 = [0,0,0];
+    
+    for (let i = 0; i < icons_total.length; i++) {
+      if (icons_total[i] !=0){icons.push(icons_total[i]);}
+    
+    }
+    const num = icons.length;
+    console.log(num);
+    if (num==1){icon_col2[1]=icons[0];}   
+    if (num ==2){icon_col1[1]=icons[0]; icon_col3[1]=icons[1];}
+    if (num==3){icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];} 
+    if (num==4){icon_col2[0]=icons[3];icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];}    
+    if (num==5){icon_col1[0]=icons[3];icon_col3[0]=icons[4];
+    icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];}     
+    if (num==6){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
+    icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];}  
+    if (num==7){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
+    icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];
+    icon_col2[2]=icons[6];}     
+    if (num==8){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
+    icon_col1[1]=icons[0]; icon_col1[2]=icons[1];icon_col3[1]=icons[2];
+    icon_col2[2]=icons[6]; icon_col3[2]=icons[7];}  
+    if   (num==9)   {
+      icon_col1 = icons.slice(0,3);
+      icon_col2 = icons.slice(3,6);
+      icon_col3 = icons.slice(6,9);
+
+    }
+    console.log(icon_col2[1]);
+        
+        const images_col1 = icon_col1.map((image,index) => {
+           return <Icon icon_id={index} progress={icon_col1[index]}/>
+        });
+        const images_col2 = icon_col2.map((image,index) => {
+           return <Icon icon_id={index} progress={icon_col2[index]}/>
+        });
+        const images_col3 = icon_col3.map((image,index) => {
+           return <Icon icon_id={index} progress={icon_col3[index]}/>
+        });
   return (
+    
     <> 
-    <div className = "row">
-    <div class="column">
-    <div className="Icon-allContainer"> 
-    <Icon />
-    <Icon />
-    <Icon />
+    <div className="column">
+    <div className="Icon-allContainer"> {images_col1}</div>
     </div>
+    <div className="column">
+    <div className="Icon-allContainer"> {images_col2}</div>
     </div>
-    <div class="column">
-    <div className="Icon-allContainer"> 
-    <Icon />
-    <Icon />
-    <Icon />
-    </div>
-    </div>
-    <div class="column">
-    <div className="Icon-allContainer"> 
-    <Icon />
-    <Icon />
-    <Icon />
-    </div>
-    </div>
+    <div className="column">
+    <div className="Icon-allContainer"> {images_col3}</div>
     </div>
     </>
   );

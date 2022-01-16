@@ -1,18 +1,12 @@
-/* Fill me in :) */
-.main {
-  margin-left: 240px; /* Same as the width of the sidebar */
-  padding: 50px 50px;
-  background-color: rgb(255, 255, 255);
-}
 
 .Icon-allContainer{
   position: relative;
-  margin-top: 180px;
-  margin-left: 560px;
+  margin-top: 130px;
+  margin-left: 480px;
   
 }
 .column {
   float: left;
   width: 8.33%;
-  padding: 0px;
+  padding: 25px;
 }
