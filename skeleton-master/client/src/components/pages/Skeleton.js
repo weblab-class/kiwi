@@ -33,48 +33,77 @@ class Skeleton extends Component {
     8 Core 
 
     */
-    const icons_total = [2,2,2,2,2,2,2,2,2];
+    const icons_total = [2,0,0,0,0,0,0,0,0]; // Progress state (1-4)
+    const index = (0,1,2,3,4,5,6,7,8,9);
     let icons = []
+    let icons_index = [];
     let icon_col1 = [0,0,0];
     let icon_col2 = [0,0,0];
     let icon_col3 = [0,0,0];
+    let icon_col1_index= [9,9,9];
+    let icon_col2_index= [9,9,9];
+    let icon_col3_index= [9,9,9];
     
     for (let i = 0; i < icons_total.length; i++) {
-      if (icons_total[i] !=0){icons.push(icons_total[i]);}
+      if (icons_total[i] !=0){icons.push(icons_total[i]);icons_index.push(i);}
     
     }
+    //_index
     const num = icons.length;
-    console.log(num);
-    if (num==1){icon_col2[1]=icons[0];}   
-    if (num ==2){icon_col1[1]=icons[0]; icon_col3[1]=icons[1];}
-    if (num==3){icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];} 
-    if (num==4){icon_col2[0]=icons[3];icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];}    
-    if (num==5){icon_col1[0]=icons[3];icon_col3[0]=icons[4];
-    icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];}     
-    if (num==6){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
-    icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];}  
-    if (num==7){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
+    console.log(icons, icons_index);
+    if (num==1){icon_col2[1]=icons[0];
+                icon_col2_index[1]=icons_index[0]}   
+    else if (num ==2){icon_col1[1]=icons[0]; icon_col3[1]=icons[1];
+        icon_col1_index[1]=icons_index[0]; icon_col3_index[1]=icons_index[1];}
+    else if (num==3){icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];
+    icon_col1_index[1]=icons_index[0]; icon_col2_index[1]=icons_index[1];icon_col3_index[1]=icons_index[2];} 
+    else if (num==4){icon_col2[0]=icons[3];icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];
+    icon_col2_index[0]=icons_index[3];icon_col1_index[1]=icons_index[0]; icon_col2_index[1]=icons_index[1];icon_col3_index[1]=icons_index[2];}    
+    else if (num==5){icon_col1[0]=icons[3];icon_col3[0]=icons[4];
     icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];
-    icon_col2[2]=icons[6];}     
-    if (num==8){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
+    
+    icon_col1_index[0]=icons_index[3];icon_col3_index[0]=icons_index[4];
+    icon_col1_index[1]=icons_index[0]; icon_col2_index[1]=icons_index[1];icon_col3_index[1]=icons_index[2];}     
+    else if (num==6){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
+    icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];
+    
+    icon_col1_index[0]=icons_index[3];icon_col3_index[0]=icons_index[4];icon_col2_index[0]=icons_index[5];
+    icon_col1_index[1]=icons_index[0]; icon_col2_index[1]=icons_index[1];icon_col3_index[1]=icons_index[2];}  
+    else if (num==7){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
+    icon_col1[1]=icons[0]; icon_col2[1]=icons[1];icon_col3[1]=icons[2];
+    icon_col2[2]=icons[6];
+    
+    icon_col1_index[0]=icons_index[3];icon_col3_index[0]=icons_index[4];icon_col2_index[0]=icons_index[5];
+    icon_col1_index[1]=icons_index[0]; icon_col2_index[1]=icons_index[1];icon_col3_index[1]=icons_index[2];
+    icon_col2_index[2]=icons_index[6];}     
+    else if (num==8){icon_col1[0]=icons[3];icon_col3[0]=icons[4];icon_col2[0]=icons[5];
     icon_col1[1]=icons[0]; icon_col1[2]=icons[1];icon_col3[1]=icons[2];
-    icon_col2[2]=icons[6]; icon_col3[2]=icons[7];}  
-    if   (num==9)   {
+    icon_col2[2]=icons[6]; icon_col3[2]=icons[7];
+    
+    icon_col1_index[0]=icons_index[3];icon_col3_index[0]=icons_index[4];icon_col2_index[0]=icons_index[5];
+    icon_col1_index[1]=icons_index[0]; icon_col2_index[1]=icons_index[1];icon_col3_index[1]=icons_index[2];
+    icon_col2_index[2]=icons_index[6]; icon_col3_index[2]=icons_index[7];}  
+    else if   (num==9)   {
       icon_col1 = icons.slice(0,3);
       icon_col2 = icons.slice(3,6);
       icon_col3 = icons.slice(6,9);
 
+      icon_col1_index = icons_index.slice(0,3);
+      icon_col2_index = icons_index.slice(3,6);
+      icon_col3_index = icons_index.slice(6,9);
+
     }
-    console.log(icon_col2[1]);
+    console.log(icon_col1, icon_col2,icon_col3);
+    console.log(icon_col1_index, icon_col2_index,icon_col3_index);
         
         const images_col1 = icon_col1.map((image,index) => {
-           return <Icon icon_id={index} progress={icon_col1[index]}/>
+           return <Icon icon_id={icon_col1_index[index]} progress={icon_col1[index]}/>
         });
         const images_col2 = icon_col2.map((image,index) => {
-           return <Icon icon_id={index} progress={icon_col2[index]}/>
+           return <Icon icon_id={icon_col2_index[index]} progress={icon_col2[index]}/>
         });
         const images_col3 = icon_col3.map((image,index) => {
-           return <Icon icon_id={index} progress={icon_col3[index]}/>
+           return <Icon icon_id={icon_col3_index[index]} progress={icon_col3[index]}/>
         });
   return (
     
