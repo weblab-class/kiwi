@@ -19,14 +19,15 @@ class Skeleton extends Component {
   }
   componentDidMount() {
     document.title = "Dashboard";
-    get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => this.setState({ goal_list: goals }));
+    get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
+    {this.setState({ stories: this.state.goal_list.push([goals])})});
 
   }
   render (){
     console.log(this.props.userId);
     //get("/api/Goals", {creatorId:this.props.userId}).then;
 
-    console.log(this.state.goals);
+    console.log(this.state.goal_list);
     
     /* 
     0 hand
