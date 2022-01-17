@@ -11,7 +11,9 @@
   overflow-y: hidden;
   padding-top: 20px;
 }
-
+img {
+  border-radius: 50%;
+}
 .SideBar-title {
   color: var(--white);
   font-size: 20px;
@@ -19,6 +21,7 @@
 
 .SideBar-linkContainer {
   margin-left: var(--left);
+  margin-top: 200px;
   height: 100%;
   width: 150px;
   position: absolute;

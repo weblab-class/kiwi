@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
-
+import logo from "../../public/heart3.gif";
 import "./SideBar.css";
 
 // This identifies your web application to Google's authentication service
@@ -17,9 +17,10 @@ class SideBar extends Component {
 
   render() {
     return (
-      
+
       <nav className="SideBar-container"> // Add pages here for dashboard
-        
+            <img src={logo} alt="logo.png"/>
+
         <div className="SideBar-linkContainer u-inlineBlock">
           <Link to="/dashboard" className="SideBar-link">
             dashboard

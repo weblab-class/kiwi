@@ -12,8 +12,64 @@ import { get, post } from "../utilities";
 
 /**
  * Define the "App" component
+ 
  */
 
+ class App extends Component {
+  // makes props available in this component
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId:"61e38e1b731b41c538b4a246",
+    };
+  }
+
+  componentDidMount() {
+    get("/api/whoami").then((user) => {
+      if (user._id) {
+        // they are registed in the database, and currently logged in.
+        this.setState({ userId: user._id });
+      }
+    });
+  }
+  handleLogin = (res) => {
+    console.log(`Logged in as ${res.profileObj.name}`);
+    const userToken = res.tokenObj.id_token;
+    post("/api/login", { token: userToken }).then((user) => {
+      setUserId(user._id);
+      post("/api/initsocket", { socketid: socket.id });
+    });
+  };
+
+   handleLogout = () => {
+    setUserId(undefined);
+    post("/api/logout");
+  };
+  
+  render() {
+    
+  return (
+    
+    <>
+    <SideBar handleLogin={this.handleLogin}
+          handleLogout={this.handleLogout}
+          userId={this.state.userId} />
+      <Router>
+        <Skeleton path="/dashboard" userId={this.state.userId}/>
+        <NotFound default />
+      </Router>
+    </>
+  );
+  }
+
+ }
+
+export default App;
+
+
+/*
+
+Code for not using App as component (should work the same)
  const App = () => {
   const [userId, setUserId] = useState(undefined);
 
@@ -51,5 +107,4 @@ import { get, post } from "../utilities";
     </>
   );
 };
-
-export default App;
+*/
