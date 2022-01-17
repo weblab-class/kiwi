@@ -14,25 +14,15 @@ class Skeleton extends Component {
     super(props);
     this.state = {
       goal_list: [],
-      // Sums: [hand,lung,heart,brain,plant,eyes,legs,biceps,core] I
-      //freq_indexed:[], // If achieve == freq, increase
-      //achievement_indexed:[], // If min<achieve<freq, stay same
-      //min__indexed:[] // If achieve<min, decrease
-
-
-      //Need to parse goals from db to get to progress state list
     };
   }
   componentDidMount() {
     document.title = "Dashboard";
     get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
     {this.setState({ goal_list: this.state.goal_list.concat(goals)})});
-    //this.state.goal_list.map((goals) =>
-    //this.setState({ freq_indexed: this.state.freq_indexed.concat(goals.goalTags)})});
   }
   render (){
     console.log(this.state.goal_list);
-    //get("/api/Goals", {creatorId:this.props.userId}).then;
     let tags=[];
     let freq = [];
     let achievement=[];

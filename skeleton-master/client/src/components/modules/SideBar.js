@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
-import logo from "../../public/heart3.gif";
+import logo from "../../public/logo.png";
 import "./SideBar.css";
 
 // This identifies your web application to Google's authentication service
