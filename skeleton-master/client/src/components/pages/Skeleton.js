@@ -40,7 +40,7 @@ if (tags.length!=freq.length!=achievement.length){
     let freq_indexed = [0,0,0,0,0,0,0,0,0];
     let achievement_indexed=[0,0,0,0,0,0,0,0,0];
     let min_indexed=[0,0,0,0,0,0,0,0,0];
-  const icon_type = ['hand','lung','heart','brain','plant','eyes','legs','biceps','core']
+    const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core']
   
     for (let i = 0; i < tags.length; i++) {
     for (let j = 0; j < tags[i].length; j++) {
@@ -60,7 +60,9 @@ if (tags.length!=freq.length!=achievement.length){
         icons_total[i]-=1;}
       }
     }
-    console.log(icons_total);
+    console.log(freq);
+    console.log(achievement);
+    console.log(min);
     /*
     0 hand
     1 Lung (aerobic)
@@ -75,6 +77,8 @@ if (tags.length!=freq.length!=achievement.length){
     */
     //console.log(user);
      // Progress state (1-4)
+    icons_total = [1,3,0,4,0,4,4,0,0];
+    
     const index = (0,1,2,3,4,5,6,7,8,9);
     let icons = []
     let icons_index = [];
@@ -90,6 +94,7 @@ if (tags.length!=freq.length!=achievement.length){
       if (icons_total[i] !=0){icons.push(icons_total[i]);icons_index.push(i);}
     
     }
+  
     //_index
     const num = icons.length;
     //console.log(icons, icons_index);

@@ -11,13 +11,7 @@
   overflow-y: hidden;
   padding-top: 20px;
 }
-img {
-  border-radius: 50%;
-  width: 150px;
-  height:150px;
-  margin-left: 40px;
-  margin-top: 40px;
-}
+
 .SideBar-title {
   color: var(--white);
   font-size: 20px;
@@ -42,17 +36,22 @@ img {
 }
 
 .SideBar-linkContainer a:hover {
-  color: #f1f1f1;
+  color: #96ca4f;
 }
 
-.SideBar-link,
-.SideBar-link:visited {
-  color: var(--white);
+.SideBar-link, .SideBar-link:visited {
+  color: #f1f1f1;
   opacity: 0.6;
   text-decoration: none;
   display: inline-block;
   text-align: left;
 }
+/*.SideBar-link:active{
+  color: #96ca4f;
+  text-decoration: none;
+  display: inline-block;
+  text-align: left;
+}*/
 
 .SideBar-link:hover {
   opacity: 0.8;
@@ -60,9 +59,8 @@ img {
 
 .SideBar-link.SideBar-login {
   position: absolute;
-  bottom: 15%;
-  left: 0;
-  right: 0;
+  margin-top: 300px;
+  margin-left: -80px;
   height: 50px;
   background-color: red;
   overflow: hidden;

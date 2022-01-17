@@ -19,7 +19,7 @@ class SideBar extends Component {
     return (
 
       <nav className="SideBar-container"> // Add pages here for dashboard
-            <img src={logo} alt="logo.png"/>
+           <img src={logo} alt="logo.png"/>
 
         <div className="SideBar-linkContainer u-inlineBlock">
           <Link to="/dashboard" className="SideBar-link">
