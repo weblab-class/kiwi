@@ -1,1 +1,17 @@
-/* Fill me in :) */
+
+.Icon-allContainer{
+  position: relative;
+  margin-top: 80px;
+  margin-left: 360px;
+  
+}
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+
+/*
+Fix CSS for Skeleton.js , Icon.js
+(icons too small)
+*/
