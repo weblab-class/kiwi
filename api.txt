@@ -57,6 +57,7 @@ router.post("/bio", auth.ensureLoggedIn, (req, res) => {
   })
 })
 
+router.post("/icon")
 
 // router.get("/bio", auth.ensureLoggedIn, (req, res) => {
 //   User.findById(req.user._id).then((user) => {

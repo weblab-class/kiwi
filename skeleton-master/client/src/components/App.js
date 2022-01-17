@@ -20,7 +20,7 @@ import { get, post } from "../utilities";
   constructor(props) {
     super(props);
     this.state = {
-      userId: undefined,
+      userId:"61e38e1b731b41c538b4a246",
     };
   }
 
@@ -45,15 +45,17 @@ import { get, post } from "../utilities";
     setUserId(undefined);
     post("/api/logout");
   };
+  
   render() {
+    
   return (
+    
     <>
     <SideBar handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
           userId={this.state.userId} />
-    
       <Router>
-        <Skeleton path="/dashboard" />
+        <Skeleton path="/dashboard" userId={this.state.userId}/>
         <NotFound default />
       </Router>
     </>
