@@ -9,6 +9,7 @@ const GoalsSchema = new mongoose.Schema({
   frequency: Number,
   minimum: Number,
   achievement: Number,
+  goalTags: Array,
 
 });
 

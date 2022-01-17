@@ -5,7 +5,6 @@ import "../../utilities.css";
 import "./Skeleton.css";
 import Icon from "../modules/Icon.js";
 //import "../../../server/server.js";
-
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID = "732721046468-lqep618inia61e4p3nlvn1jft5c58fp4.apps.googleusercontent.com";
 import { get } from "../../utilities";
@@ -15,21 +14,64 @@ class Skeleton extends Component {
     super(props);
     this.state = {
       goal_list: [],
+      // Sums: [hand,lung,heart,brain,plant,eyes,legs,biceps,core] I
+      //freq_indexed:[], // If achieve == freq, increase
+      //achievement_indexed:[], // If min<achieve<freq, stay same
+      //min__indexed:[] // If achieve<min, decrease
+
+
+      //Need to parse goals from db to get to progress state list
     };
   }
   componentDidMount() {
     document.title = "Dashboard";
     get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
-    {this.setState({ stories: this.state.goal_list.push([goals])})});
-
+    {this.setState({ goal_list: this.state.goal_list.concat(goals)})});
+    //this.state.goal_list.map((goals) =>
+    //this.setState({ freq_indexed: this.state.freq_indexed.concat(goals.goalTags)})});
   }
   render (){
-    console.log(this.props.userId);
-    //get("/api/Goals", {creatorId:this.props.userId}).then;
-
     console.log(this.state.goal_list);
-    
-    /* 
+    //get("/api/Goals", {creatorId:this.props.userId}).then;
+    let tags=[];
+    let freq = [];
+    let achievement=[];
+    let min=[];
+    this.state.goal_list.forEach(function (item, index) {
+      tags.push(item.goalTags);
+      freq.push(item.frequency);
+      achievement.push(item.achievement);
+      min.push(item.minimum);
+});
+if (tags.length!=freq.length!=achievement.length){
+  console.log("length error")
+}
+    //let tags_indexed=[];
+    let freq_indexed = [0,0,0,0,0,0,0,0,0];
+    let achievement_indexed=[0,0,0,0,0,0,0,0,0];
+    let min_indexed=[0,0,0,0,0,0,0,0,0];
+  const icon_type = ['hand','lung','heart','brain','plant','eyes','legs','biceps','core']
+  
+    for (let i = 0; i < tags.length; i++) {
+    for (let j = 0; j < tags[i].length; j++) {
+    let place = icon_type.indexOf(tags[i][j]);
+    freq_indexed[place]+=freq[j];
+    achievement_indexed[place]+=achievement[j];
+    min_indexed[place]+=min[j];
+    }
+    }
+    let icons_total = [0,0,0,0,0,0,0,0,0];
+    for (let i = 0; i < freq_indexed.length; i++) {
+      if (freq_indexed[i]==achievement_indexed[i]){
+        if(icons_total[i]!=4){
+        icons_total[i]+=1;}
+      }if (achievement_indexed[i]<=min_indexed[i]){
+        if(icons_total[i]>=0){
+        icons_total[i]-=1;}
+      }
+    }
+    console.log(icons_total);
+    /*
     0 hand
     1 Lung (aerobic)
     2 Heart (cardio)
@@ -42,7 +84,7 @@ class Skeleton extends Component {
 
     */
     //console.log(user);
-    const icons_total = [4,4,4,4,4,4,1,4,4]; // Progress state (1-4)
+     // Progress state (1-4)
     const index = (0,1,2,3,4,5,6,7,8,9);
     let icons = []
     let icons_index = [];
