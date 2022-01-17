@@ -3,45 +3,12 @@
   padding: 0 35%;
 }
 
-.Profile-avatar {
-  /* make it responsive */
-  max-width: 100%;
-  width: 65%;
-  height: auto;
-  display: block;
-  /* div height to be the same as width*/
-  padding-top: 65%;
-
-  /* make it a circle */
-  border-radius: 50%;
-
-  /* Centering on image`s center*/
-  background-position-y: center;
-  background-position-x: center;
-  background-repeat: no-repeat;
-
-  /* it makes the clue thing, takes smaller dimension to fill div */
-  background-size: cover;
-
-  /* it is optional, for making this div centered in parent*/
-  margin: 0 auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin-left: -90%;
-  background-image: url("kiwi.jpg");
-}
-
 .Profile-name {
   font-size: 40px;
   font-weight: 300;
-  margin-top: -5%;
-}
-
-.Profile-line {
-  border-color: var(--grey);
-  margin-top: -50%;
+  margin-top: -15%;
+  position: relative;
+  left: 140px;
 }
 
 .Profile-subContainer {
@@ -57,9 +24,80 @@
   font-weight: 300;
   font-size: 24px;
   margin: var(--m) var(--s);
+  color: white;
+  text-align: center;
 }
 
-.TextBox {
-  border: solid 1px black;
-  max-width: 200px;
+.Profile-subTitle2 {
+  font-weight: 400;
+  font-size: 24px;
+  margin: var(--m) var(--s);
+  color: black;
+  text-align: center;
+}
+
+.Container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  top: 50px;
+}
+
+.Dropdown {
+  width: 400px;
+  position: relative;
+  /* top: 15px;
+  left: 400px; */
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  padding: 10px 30px;
+}
+
+.Position {
+  position: relative;
+  top: 0px;
+  left: 600px;
+}
+
+.Outer-Box {
+  position: relative;
+  left: 350px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  border: solid black;
+  background-color: black;
+  width: 350px;
+  height: 250px;
+  overflow-y: auto;
+  text-align: center;
+  border-radius: 35px;
+}
+
+.Outer-Box2 {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  border: solid black;
+  background-color: black;
+  width: 350px;
+  height: 250px;
+  overflow-y: auto;
+  text-align: center;
+  border-radius: 35px;
+}
+
+.Posts {
+  color: white;
 }

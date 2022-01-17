@@ -1,0 +1,49 @@
+/* Fill me in :) */
+
+.circular--portrait {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+
+  background-position-y: center;
+  background-position-x: left;
+  background-repeat: no-repeat;
+
+  /* margin: 0 auto;
+  top: 0; */
+  position: relative;
+  left: -70px;
+  /* right: 0;
+  bottom: 0; */
+}
+
+.image-container {
+  /* display: inline-block; */
+  position: relative;
+}
+
+.image-button {
+  background-color: black;
+  border-color: #000;
+  color: white;
+  font-family: sans-serif;
+  border-radius: 50%;
+  cursor: pointer;
+  text-align: center;
+  line-height: 150%;
+  /* display: inline-block; 
+  font-size: 100em;
+  margin-top: 1rem; */
+  position: relative;
+  top: 200px;
+  left: 120px;
+  width: 25px;
+  height: 25px;
+}
+
+.image-button:hover {
+  background-color: #99d98c;
+  border-color: #99d98c;
+}

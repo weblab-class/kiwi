@@ -11,6 +11,9 @@ import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
 
+import 'foundation-sites/dist/css/foundation.min.css';
+
+
 /**
  * Define the "App" component
  */

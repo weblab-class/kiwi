@@ -43,26 +43,40 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 router.get("/user", (req, res) => {
+  console.log("1", req.query.userId);
   User.findById(req.query.userId).then((user) => {
-    //console.log(user);
+    console.log(user.bio);
     res.send(user);
-  });
+  })
+  .catch((error) => console.error(error));
 });
 
 router.post("/bio", auth.ensureLoggedIn, (req, res) => {
-  console.log(`Received a chat message from ${req.user.name}: ${req.body.value}`);
+  console.log(`Received a bio from ${req.user.name}: ${req.body.value}`);
   User.findById(req.user._id).then((user) => {
-    user.bio  = req.body.value;
+    user.bio = req.body.value;
+    user.save();
+  });
+
+  return res.json();
+})
+
+router.post("/interests", auth.ensureLoggedIn, (req, res) => {
+  console.log(`Received interests from ${req.user.name}: ${req.body.value}`);
+  User.findById(req.user._id).then((user) => {
+    user.interests = req.body.value;
     user.save();
   })
 })
 
-
-router.get("/bio", auth.ensureLoggedIn, (req, res) => {
+router.post("/image", auth.ensureLoggedIn, (req, res) => {
+  console.log(`Received interests from ${req.user.name}`);
   User.findById(req.user._id).then((user) => {
-    res.send(user.bio)
+    user.image = req.body.value;
+    user.save();
   })
 })
+
 
 
 // anything else falls to this "not found" case
