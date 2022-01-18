@@ -26,14 +26,20 @@ class ButtonModals extends React.Component {
         super(props)
         this.state={
             show:false,
-            bio: ""
+            bio: "write your bio"
         }
     }
 
     componentDidMount() {
         fetch(`/api/user?userId=${this.props.userId}`)
         .then(response => response.json())
-        .then(data => this.setState({bio: data.bio}))
+        .then(data => {
+            if(data.bio === "") {
+                this.setState({bio: "write your bio"});
+            } else {
+                this.setState({bio: data.bio})
+            }
+        })
         .catch(error => console.error(error));
     }
 
@@ -45,10 +51,15 @@ class ButtonModals extends React.Component {
 
     handleModal2()
     {     
-        //this.setState({show: true});
         fetch(`/api/user?userId=${this.props.userId}`)
         .then(response => response.json())
-        .then(data => this.setState({bio: data.bio}))
+        .then(data => {
+            if(data.bio === "") {
+                this.setState({bio: "write your bio"});
+            } else {
+                this.setState({bio: data.bio})
+            }
+        })
         .catch(error => console.error(error));
         this.setState({show: false});
     }

@@ -11,6 +11,7 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
+const Goals = require("./models/goals");
 
 
 // import authentication library
@@ -22,7 +23,6 @@ const router = express.Router();
 //initialize socket
 const socketManager = require("./server-socket");
 
-const Goals = require("./models/goals");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -61,7 +61,8 @@ router.post("/bio", auth.ensureLoggedIn, (req, res) => {
     user.save();
   });
 
-  return res.json();
+  // return "";
+  // return res.json();
 })
 
 router.post("/interests", auth.ensureLoggedIn, (req, res) => {
