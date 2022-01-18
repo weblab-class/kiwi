@@ -33,7 +33,7 @@ import core3 from '../../public/core3.gif';
 import core4 from '../../public/core4.gif';
 import "./Icon.css";
 // This identifies your web application to Google's authentication service
-const GOOGLE_CLIENT_ID = "732721046468-l63b9oggi7jnpl2ve6m39s87rk80en9s.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "732721046468-8g0qe7o8qbddbvfkkrtu59tngop3dnh7.apps.googleusercontent.com";
 
 
 class Icon extends Component {
