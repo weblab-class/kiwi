@@ -38,16 +38,6 @@ const socketManager = require("./server-socket");
 const mongoConnectionURL = process.env.ATLAS_SRV;
 const databaseName = "Cluster0"
 
-const app = express();
-app.use(validator.checkRoutes);
-
-app.use(
-  session({
-    secret: "session-secret",
-    resave: false,
-    saveUnitialized: false,
-  })
-);
 // connect to mongodb
 mongoose
   .connect(mongoConnectionURL, {
