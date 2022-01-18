@@ -6,7 +6,7 @@ import "./Skeleton.css";
 import Icon from "../modules/Icon.js";
 //import "../../../server/server.js";
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
-const GOOGLE_CLIENT_ID = "732721046468-lqep618inia61e4p3nlvn1jft5c58fp4.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "732721046468-l63b9oggi7jnpl2ve6m39s87rk80en9s.apps.googleusercontent.com";
 import { get } from "../../utilities";
 
 class Skeleton extends Component {
