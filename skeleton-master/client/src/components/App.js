@@ -26,7 +26,8 @@ import 'foundation-sites/dist/css/foundation.min.css';
   constructor(props) {
     super(props);
     this.state = {
-      userId:undefined,
+      userId:
+"61de2bdd74de5c1c88b927e1",
     };
   }
 
@@ -42,40 +43,35 @@ import 'foundation-sites/dist/css/foundation.min.css';
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
-<<<<<<< HEAD
-      this.setState({ userId: "101702048355221581250"});
-=======
       this.setState({userId: user._id});
->>>>>>> 5bd00a4ab7513696c83686dfa3137bc187af68e1
       post("/api/initsocket", { socketid: socket.id });
     });
   };
 
    handleLogout = () => {
-<<<<<<< HEAD
-    this.setState({ userId: undefined });
-    post("/api/logout");
-=======
     this.setState({userId: undefined});
     post("/api/logout").then(() => {window.location.href = "/dashboard";});
 
->>>>>>> 5bd00a4ab7513696c83686dfa3137bc187af68e1
   };
   
   render() {
-    
   return (
     
     <>
+    <div className="App-container">
+    <div className="b1">
     <SideBar handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
           userId={this.state.userId} />
-    
+    </div>
+    <div>
       <Router>
         <Skeleton path="/dashboard" userId={this.state.userId}/>
         <Profile path="/profile/:userId" />
         <NotFound default />
       </Router>
+     </div>
+     </div>
     </>
   );
   }

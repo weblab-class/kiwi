@@ -1,10 +1,14 @@
 .Icon-container {
-  margin:-25px;
-  position: relative;
-
+  display: inline-block;
+  padding:-50px;
+  margin:0px;
 }
+
+
 img {
-  width: 225px;
-  height: 225px;
-  padding: 0px;
+    zoom: 2.5;
+    object-fit: cover;
+    width:150px;
+    height:150px;
+    margin:0px;
 }

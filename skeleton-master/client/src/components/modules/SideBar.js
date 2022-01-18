@@ -17,32 +17,28 @@ class SideBar extends Component {
 
   render() {
     return (
+/*<div><img src={logo} alt="logo.png" /></div>*/
+      <nav className="SideBar-container"> 
 
-      <nav className="SideBar-container"> // Add pages here for dashboard
-
-        <div className="SideBar-linkContainer u-inlineBlock">
-        <img src={logo} alt="logo.png"/>
-          <Link to="/dashboard" className="SideBar-link">
+       <div className="SideBar-linkContainer u-inlineBlock">
+        
+          <div><Link to="/dashboard" className="SideBar-link">
             dashboard
-          </Link>
-          {this.props.userId && (
-            <Link to={`/profile/${this.props.userId}`} className="SideBar-link">
-              profile
-            </Link>
-          )}
-          <Link to="/progress/" className="SideBar-link">
+          </Link></div>
+          
+          <div><Link to="/progress/" className="SideBar-link">
             progress
-          </Link>
-          <Link to="/friends/" className="SideBar-link">
+          </Link></div>
+          <div><Link to="/friends/" className="SideBar-link">
             friends
-          </Link>
-          {this.props.userId ? (
+          </Link></div>
+          <div>{this.props.userId ? (
             <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}
               buttonText="Logout"
               onLogoutSuccess={this.props.handleLogout}
               onFailure={(err) => console.log(err)}
-              className="SideBar-link SideBar-login"
+              className="SideBar-link"
             />
           ) : (
             <GoogleLogin
@@ -50,9 +46,14 @@ class SideBar extends Component {
               buttonText="Login"
               onSuccess={this.props.handleLogin}
               onFailure={(err) => console.log(err)}
-              className="SideBar-link SideBar-login"
+              className="SideBar-link"
             />
-          )}
+          )}</div>
+          <div>{this.props.userId && (
+            <Link to={`/profile/${this.props.userId}`} className="SideBar-link">
+              profile
+            </Link>
+          )}</div>
         </div>
         
       </nav>

@@ -14,15 +14,20 @@ class Skeleton extends Component {
     super(props);
     this.state = {
       goal_list: [],
+      icons:[],
     };
   }
   componentDidMount() {
     document.title = "Dashboard";
     get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
     {this.setState({ goal_list: this.state.goal_list.concat(goals)})});
+    get(`/api/icons`, {creatorId:this.props.userId}).then((icons) => 
+    {this.setState({ icons: this.state.icons.concat(icons)})});
   }
   render (){
-    console.log(this.state.goal_list);
+    console.log(icons);
+    post(`/api/icons`, {type:1});
+    // Parsing data
     let tags=[];
     let freq = [];
     let achievement=[];
@@ -33,10 +38,8 @@ class Skeleton extends Component {
       achievement.push(item.achievement);
       min.push(item.minimum);
 });
-if (tags.length!=freq.length!=achievement.length){
-  console.log("length error")
-}
-    //let tags_indexed=[];
+  console.log (freq,achievement,min);
+    //Indexing data
     let freq_indexed = [0,0,0,0,0,0,0,0,0];
     let achievement_indexed=[0,0,0,0,0,0,0,0,0];
     let min_indexed=[0,0,0,0,0,0,0,0,0];
@@ -56,14 +59,16 @@ if (tags.length!=freq.length!=achievement.length){
         if(icons_total[i]!=4){
         icons_total[i]+=1;}
       }if (achievement_indexed[i]<=min_indexed[i]){
-        if(icons_total[i]>=0){
+        if(icons_total[i]>0){
         icons_total[i]-=1;}
       }
     }
+    /*
     console.log(freq);
     console.log(achievement);
     console.log(min);
-    /*
+    console.log(icons_total);
+    
     0 hand
     1 Lung (aerobic)
     2 Heart (cardio)
@@ -77,7 +82,7 @@ if (tags.length!=freq.length!=achievement.length){
     */
     //console.log(user);
      // Progress state (1-4)
-    icons_total = [1,3,0,4,0,4,4,0,0];
+    //icons_total = [1,3,0,4,0,4,4,0,0];
     
     const index = (0,1,2,3,4,5,6,7,8,9);
     let icons = []
@@ -159,13 +164,9 @@ if (tags.length!=freq.length!=achievement.length){
     
     // Calling Icon.js
     <> 
-    <div className="column">
+    <div className="page">
     <div className="Icon-allContainer"> {images_col1}</div>
-    </div>
-    <div className="column">
     <div className="Icon-allContainer"> {images_col2}</div>
-    </div>
-    <div className="column">
     <div className="Icon-allContainer"> {images_col3}</div>
     </div>
     </>
