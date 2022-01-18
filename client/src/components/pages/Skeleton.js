@@ -57,7 +57,7 @@ if (tags.length!=freq.length!=achievement.length){
         if(icons_total[i]!=4){
         icons_total[i]+=1;}
       }if (achievement_indexed[i]<=min_indexed[i]){
-        if(icons_total[i]>=0){
+        if(icons_total[i]>0){
         icons_total[i]-=1;}
       }
     }
