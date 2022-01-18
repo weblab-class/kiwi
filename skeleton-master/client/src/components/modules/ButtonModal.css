@@ -1,0 +1,31 @@
+.modal-body {
+  background-color: #fff;
+  max-height: 90vh;
+}
+
+.close {
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: black;
+  border-color: #000;
+  border-radius: 50px;
+  width: 300px;
+  color: white;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: #99d98c;
+  border-color: #99d98c;
+}
+
+.btn-close {
+  color: #99d98c;
+}
+
+.modal-content {
+  max-height: 50000px;
+  overflow: scroll;
+}

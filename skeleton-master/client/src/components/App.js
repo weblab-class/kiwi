@@ -2,6 +2,9 @@ import React, { Component, useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
+import Profile from "./pages/Profile.js";
+import NavBar from "./modules/NavBar.js";
+
 import SideBar from "./modules/SideBar.js";
 import "../utilities.css";
 
@@ -9,6 +12,9 @@ import "./App.css";
 import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
+
+import 'foundation-sites/dist/css/foundation.min.css';
+
 
 /**
  * Define the "App" component
@@ -36,14 +42,24 @@ import { get, post } from "../utilities";
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
+<<<<<<< HEAD
       this.setState({ userId: "101702048355221581250"});
+=======
+      this.setState({userId: user._id});
+>>>>>>> 5bd00a4ab7513696c83686dfa3137bc187af68e1
       post("/api/initsocket", { socketid: socket.id });
     });
   };
 
    handleLogout = () => {
+<<<<<<< HEAD
     this.setState({ userId: undefined });
     post("/api/logout");
+=======
+    this.setState({userId: undefined});
+    post("/api/logout").then(() => {window.location.href = "/dashboard";});
+
+>>>>>>> 5bd00a4ab7513696c83686dfa3137bc187af68e1
   };
   
   render() {
@@ -57,6 +73,7 @@ import { get, post } from "../utilities";
     
       <Router>
         <Skeleton path="/dashboard" userId={this.state.userId}/>
+        <Profile path="/profile/:userId" />
         <NotFound default />
       </Router>
     </>
@@ -68,44 +85,4 @@ import { get, post } from "../utilities";
 export default App;
 
 
-/*
 
-Code for not using App as component (should work the same)
- const App = () => {
-  const [userId, setUserId] = useState(undefined);
-
-  useEffect(() => {
-    get("/api/whoami").then((user) => {
-      if (user._id) {
-        // they are registed in the database, and currently logged in.
-        setUserId(user._id);
-      }
-    });
-  }, []);
-
-  const handleLogin = (res) => {
-    console.log(`Logged in as ${res.profileObj.name}`);
-    const userToken = res.tokenObj.id_token;
-    post("/api/login", { token: userToken }).then((user) => {
-      setUserId(user._id);
-      post("/api/initsocket", { socketid: socket.id });
-    });
-  };
-
-  const handleLogout = () => {
-    setUserId(undefined);
-    post("/api/logout");
-  };
-
-  return (
-    <>
-    <SideBar />
-    
-      <Router>
-        <Skeleton path="/dashboard" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-        <NotFound default />
-      </Router>
-    </>
-  );
-};
-*/
