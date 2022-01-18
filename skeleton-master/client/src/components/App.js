@@ -36,13 +36,13 @@ import { get, post } from "../utilities";
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
-      setUserId(user._id);
+      this.setState({ userId: "101702048355221581250"});
       post("/api/initsocket", { socketid: socket.id });
     });
   };
 
    handleLogout = () => {
-    setUserId(undefined);
+    this.setState({ userId: undefined });
     post("/api/logout");
   };
   
@@ -54,6 +54,7 @@ import { get, post } from "../utilities";
     <SideBar handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
           userId={this.state.userId} />
+    
       <Router>
         <Skeleton path="/dashboard" userId={this.state.userId}/>
         <NotFound default />
