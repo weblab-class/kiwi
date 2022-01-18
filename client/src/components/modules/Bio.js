@@ -31,7 +31,7 @@ const Bio = (props) => {
             value={bio}
             onChange={handleChange}
         /> 
-        <button type="button" className="btn btn-primary" onClick={handleSave} >save </button>
+        <button type="button" className="btn-tertiary" onClick={handleSave} >save </button>
     </>
     );
 };

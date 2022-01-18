@@ -3,7 +3,6 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
-import NavBar from "./modules/NavBar.js";
 
 import SideBar from "./modules/SideBar.js";
 import "../utilities.css";
@@ -54,22 +53,28 @@ import 'foundation-sites/dist/css/foundation.min.css';
   };
   
   render() {
-    
-  return (
-    
-    <>
-    <SideBar handleLogin={this.handleLogin}
-          handleLogout={this.handleLogout}
-          userId={this.state.userId} />
-      <Router>
-        <Skeleton path="/dashboard" userId={this.state.userId}/>
-        <Profile path="/profile/:userId" />
-        <NotFound default />
-      </Router>
-    </>
-  );
-  }
 
+    return (
+  
+      <>
+      <div className="App-container">
+      <div className="b1">
+      <SideBar handleLogin={this.handleLogin}
+            handleLogout={this.handleLogout}
+            userId={this.state.userId} />
+      </div>
+      <div>
+        <Router>
+          <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
+          <Profile path="/profile/:userId" />
+          <NotFound default />
+        </Router>
+       </div>
+       </div>
+      </>
+    );
+    }
+   
  }
 
 export default App;

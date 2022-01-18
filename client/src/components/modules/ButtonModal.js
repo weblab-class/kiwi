@@ -68,7 +68,7 @@ class ButtonModals extends React.Component {
     render() {
         return (
             <div>
-                <Button onClick={()=>{this.handleModal()}}>{this.state.bio}</Button>
+                <Button className = "imageButton2" onClick={()=>{this.handleModal()}}>{this.state.bio}</Button>
                 <Modal 
                     show={this.state.show} 
                     onHide={()=>this.handleModal2()}

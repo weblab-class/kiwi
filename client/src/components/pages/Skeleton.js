@@ -8,6 +8,7 @@ import Icon from "../modules/Icon.js";
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID = "732721046468-8g0qe7o8qbddbvfkkrtu59tngop3dnh7.apps.googleusercontent.com";
 import { get } from "../../utilities";
+import GoalList from  "../modules/GoalList.js";
 
 class Skeleton extends Component {
   constructor(props) {
@@ -155,19 +156,17 @@ if (tags.length!=freq.length!=achievement.length){
     const images_col3 = icon_col3.map((image,index) => {
            return <Icon icon_id={icon_col3_index[index]} progress={icon_col3[index]}/>
         });
+        
   return (
-    
-    // Calling Icon.js
-    <> 
-    <div className="column">
-    <div className="Icon-allContainer"> {images_col1}</div>
-    </div>
-    <div className="column">
-    <div className="Icon-allContainer"> {images_col2}</div>
-    </div>
-    <div className="column">
-    <div className="Icon-allContainer"> {images_col3}</div>
-    </div>
+  
+          // Calling Icon.js
+          <>
+          <div className="page">
+          <div className="Icon-allContainer"> {images_col1}</div>
+          <div className="Icon-allContainer"> {images_col2}</div>
+          <div className="Icon-allContainer"> {images_col3}</div>
+          </div>
+    <GoalList userId = {this.props.userId}></GoalList>
     </>
   );
   }
