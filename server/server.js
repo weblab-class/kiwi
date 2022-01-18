@@ -15,6 +15,7 @@
 
 // validator runs some basic checks to make sure you've set everything up correctly
 // this is a tool provided by staff, so you don't need to worry about it
+
 require('dotenv').config();
 const validator = require("./validator");
 validator.checkSetup();
@@ -36,6 +37,9 @@ const socketManager = require("./server-socket");
 // TODO change connection URL after setting up your team database
 const mongoConnectionURL = process.env.ATLAS_SRV;
 const databaseName = "Cluster0"
+
+const app = express();
+app.use(validator.checkRoutes);
 
 app.use(
   session({
