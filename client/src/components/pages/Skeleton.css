@@ -1,19 +1,11 @@
-.grid {
-  margin-left: 240px;
-  display: flex; /* establish flex container */
-  flex-wrap: wrap; /* enable flex items to wrap */
-  justify-content: space-around;
-}
-
 .page {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 0 4px;
-  margin: 0px;
 }
 
 .Icon-allContainer {
-  width: 33%;
+  width: 100%;
 }
 .column {
   padding: 2px;
@@ -22,8 +14,3 @@
   float: left;
   margin: 0px;
 }
-
-/*
- Fix CSS for Skeleton.js , Icon.js
- (icons too small)
- */

@@ -1,6 +1,8 @@
 .modal-body {
   background-color: #fff;
-  max-height: 90vh;
+  height: 300px;
+  max-height: 100%;
+  text-align: left;
 }
 
 .close {
@@ -10,10 +12,11 @@
 .btn-tertiary {
   background-color: black;
   border-color: #000;
-  border-radius: 50px;
-  width: 300px;
+  border-radius: 30%;
+  width: 100%;
   color: white;
   text-align: center;
+  margin: 0 auto;
 }
 
 .btn-tertiary:hover {
@@ -21,11 +24,35 @@
   border-color: #99d98c;
 }
 
-.btn-close {
+.btn-tertiary-close {
   color: #99d98c;
 }
 
 .modal-content {
-  max-height: 50000px;
+  max-height: 100%;
   overflow: scroll;
+  font-size: 16 px;
+}
+
+.saveButton {
+  width: 20%;
+  height: 10%;
+  background-color: black;
+  border-color: #000;
+  border-radius: 50%;
+  color: white;
+  overflow: hidden;
+}
+
+.saveButton:hover {
+  background-color: #99d98c;
+  border-color: #99d98c;
+}
+
+.TextBox {
+  box-sizing: border-box;
+  border-radius: 15px;
+  resize: none;
+  overflow: auto;
+  font-size: 16 px;
 }

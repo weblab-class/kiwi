@@ -1,6 +1,6 @@
 .App-container {
   display: grid;
-  grid-template-columns: 1fr 4fr 2fr;
+  grid-template-columns: 1fr 4fr;
 
   /*
   Add another column here for goals section of dashboard

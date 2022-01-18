@@ -37,44 +37,45 @@ const Profile = (props) => {
 
   const onChange = (value) => {
     setInterests(value);
-    console.log("HI");
     post("/api/interests", {value: value})
   };
 
 
   return (
     <>
-      <div className="Profile-avatarContainer">
-      <ImageFile userId = {props.userId} initial_img={image}/>
-      </div>
+      <div className = "Container">
+        <div className="Profile-avatarContainer">
+          <ImageFile userId = {props.userId} initial_img={image}/>
+        </div>
 
-      <h1 className="Profile-name u-textCenter">{user.name}</h1>
+        <h1 className="Profile-name u-textCenter">{user.name}</h1>
 
-      <div className = "Position"> 
-      <div className="u-inlineBlock u-textCenter">
+        <div className="u-inlineBlock u-textCenter Interests">
           <h4 className="Profile-subTitle2 u-inlineBlock">interests:</h4>
-          <div className = "Dropdown u-inlineBlock">
+          <div className = "Interests-Dropdown u-inlineBlock">
             <Interests 
             isMulti={true} 
             value = {interests} 
             onChange={onChange}/>
           </div>
         </div>
-      </div>
       
-      {/* <div className="Container"> */}
-        <div className=" u-textCenter Outer-Box3">
+        <div className=" u-textCenter Outer-Box-Bio">
           <h4 className="Profile-subTitle">bio</h4>
-          <ButtonModal userId = {props.userId} bio = {bio}></ButtonModal>
+          <div> 
+            <ButtonModal userId = {props.userId} bio = {bio}></ButtonModal>
+          </div>
         </div>
         
-        <div className="u-textCenter Outer-Box2">
+        <div className="u-textCenter Outer-Box-Posts">
           <h4 className="Profile-subTitle">posts</h4>
-          <div className="Posts">3 ways to improve your cardio</div>
-          <div className="Posts">4 ways to improve your flexibility</div>
-          <div className ="Posts">2 ways to get your heart pumping</div>
-        </div>
-      {/* </div> */}
+          <div className = "Posts"> 
+            <div>3 ways to improve your cardio</div>
+            <div>4 ways to improve your flexibility</div>
+            <div>2 ways to get your heart pumping</div>
+          </div>
+        </div> 
+      </div>
     </>
   );
 };

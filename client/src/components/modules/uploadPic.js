@@ -26,7 +26,6 @@ import "./uploadPic.css";
   
   buildImgTag(){
     let imgTag = null;
-    //console.log(this.state.imageURI)
     if (this.state.imageURI !== null) {
       imgTag = (<img className="circular--portrait" src={this.state.imageURI}></img>);
     }
@@ -45,7 +44,7 @@ import "./uploadPic.css";
   }
   
   handleChange(e){
-    this.readURI(e); // maybe call this with webworker or async library?
+    this.readURI(e); 
     if (this.props.onChange !== undefined)
       this.props.onChange(e); // propagate to parent component
   }
@@ -53,21 +52,20 @@ import "./uploadPic.css";
   render() {
     const imgTag = this.buildImgTag();
 
-    return <div className = "image-container">
+    return <div className = "image-position">
+            <input
+              id={this.state.id}
+              type="file"
+              onChange={this.handleChange.bind(this)}
+             hidden/>
+            {imgTag}
             <label
               htmlFor={this.state.id}
                className = "image-button">
               +
             </label>
-            <input
-              id={this.state.id}
-              type="file"
-              onChange={this.handleChange.bind(this)}
-              className="show-for-sr" hidden/>
-            {imgTag}
           </div>;
   }
 }
-
 
 export default ImageFile;

@@ -23,7 +23,8 @@ class Skeleton extends Component {
     {this.setState({ goal_list: this.state.goal_list.concat(goals)})});
   }
   render (){
-    console.log(this.state.goal_list);
+    // get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
+    // {this.setState({ goal_list: this.state.goal_list.concat(goals)})});
     let tags=[];
     let freq = [];
     let achievement=[];
@@ -78,7 +79,7 @@ if (tags.length!=freq.length!=achievement.length){
     */
     //console.log(user);
      // Progress state (1-4)
-    icons_total = [1,3,0,4,0,4,4,0,0];
+    // icons_total = [1,3,0,4,0,4,4,0,0];
     
     const index = (0,1,2,3,4,5,6,7,8,9);
     let icons = []
@@ -156,19 +157,28 @@ if (tags.length!=freq.length!=achievement.length){
     const images_col3 = icon_col3.map((image,index) => {
            return <Icon icon_id={icon_col3_index[index]} progress={icon_col3[index]}/>
         });
-        
-  return (
-  
+
+        return (
           // Calling Icon.js
-          <>
-          <div className="page">
-          <div className="Icon-allContainer"> {images_col1}</div>
-          <div className="Icon-allContainer"> {images_col2}</div>
-          <div className="Icon-allContainer"> {images_col3}</div>
-          </div>
-    <GoalList userId = {this.props.userId}></GoalList>
-    </>
-  );
+         <>
+        
+         <div className="page">
+         <div>
+         <div className="Icon-allContainer"> {images_col1}</div>
+         </div>
+         <div>
+         <div className="Icon-allContainer"> {images_col2}</div>
+         </div>
+         <div>
+         <div className="Icon-allContainer"> {images_col3}</div>
+         </div>
+          <div>
+          <GoalList userId = {this.props.userId}></GoalList></div>
+        </div>
+       
+   </>
+ );
+
   }
 
 }

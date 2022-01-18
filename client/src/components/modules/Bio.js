@@ -1,7 +1,5 @@
 import { get, post } from "../../utilities"
 import React, { useState, useEffect } from "react";
-import "./Bio.css";
-
 
 const Bio = (props) => {
     const [bio, setBio] = useState();
@@ -26,12 +24,13 @@ const Bio = (props) => {
     <>
         <textarea
             type="text"
-            className="textbox"
+            className="TextBox"
+            style = {{resize:"none", height:150, fontSize:15}}
             placeholder="Bio"
             value={bio}
             onChange={handleChange}
         /> 
-        <button type="button" className="btn-tertiary" onClick={handleSave} >save </button>
+        <button type="button" className="saveButton" onClick={handleSave} >save </button>
     </>
     );
 };

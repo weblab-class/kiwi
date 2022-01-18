@@ -15,8 +15,8 @@ const customStyles = {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      height: '500px', // <-- This sets the height
-      overlfow: 'scroll' // <-- This tells the modal to scrol
+      height: '300px', 
+
     }
   };
 
@@ -26,7 +26,7 @@ class ButtonModals extends React.Component {
         super(props)
         this.state={
             show:false,
-            bio: "write your bio"
+            bio: "add your bio here"
         }
     }
 
@@ -34,8 +34,9 @@ class ButtonModals extends React.Component {
         fetch(`/api/user?userId=${this.props.userId}`)
         .then(response => response.json())
         .then(data => {
-            if(data.bio === "") {
-                this.setState({bio: "write your bio"});
+            console.log(this.state.bio)
+            if(data.bio === "" || data.bio === undefined) {
+                this.setState({bio: "add your bio here"});
             } else {
                 this.setState({bio: data.bio})
             }
@@ -54,8 +55,8 @@ class ButtonModals extends React.Component {
         fetch(`/api/user?userId=${this.props.userId}`)
         .then(response => response.json())
         .then(data => {
-            if(data.bio === "") {
-                this.setState({bio: "write your bio"});
+            if(data.bio === "" || data.bio === undefined) {
+                this.setState({bio: "add your bio here"});
             } else {
                 this.setState({bio: data.bio})
             }
@@ -68,7 +69,7 @@ class ButtonModals extends React.Component {
     render() {
         return (
             <div>
-                <Button className = "imageButton2" onClick={()=>{this.handleModal()}}>{this.state.bio}</Button>
+                <Button variant = "tertiary" data-backdrop = "false" onClick={()=>{this.handleModal()}}>{this.state.bio}</Button>
                 <Modal 
                     show={this.state.show} 
                     onHide={()=>this.handleModal2()}
