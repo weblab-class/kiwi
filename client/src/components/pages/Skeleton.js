@@ -47,14 +47,14 @@ if (tags.length!=freq.length!=achievement.length){
     for (let i = 0; i < tags.length; i++) {
     for (let j = 0; j < tags[i].length; j++) {
     let place = icon_type.indexOf(tags[i][j]);
-    freq_indexed[place]+=freq[j];
-    achievement_indexed[place]+=achievement[j];
-    min_indexed[place]+=min[j];
+    freq_indexed[place]+=freq[i];
+    achievement_indexed[place]+=achievement[i];
+    min_indexed[place]+=min[i];
     }
     }
     let icons_total = [0,0,0,0,0,0,0,0,0];
     for (let i = 0; i < freq_indexed.length; i++) {
-      if (freq_indexed[i]==achievement_indexed[i]){
+      if (freq_indexed[i]==achievement_indexed[i] && freq_indexed[i] != 0){
         if(icons_total[i]!=4){
         icons_total[i]+=1;}
       }if (achievement_indexed[i]<=min_indexed[i]){
