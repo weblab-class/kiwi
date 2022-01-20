@@ -12,6 +12,7 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const Goals = require("./models/goals");
+const Icons = require("./models/icons");
 
 
 // import authentication library
@@ -113,7 +114,27 @@ router.post("/updateachievement", (req, res) => {
   });
 });
 
+router.get("/icons", (req, res) => {
+  Icons.find({creatorId: req.query.creatorId}).then((icons) => {
+    res.send(icons);
+  });
+});
 
+router.post("/icons", auth.ensureLoggedIn, (req, res) => {
+  console.log(`Received icon states from ${req.user.name}`);
+  Icons.findById(req.user._id).then((icons) => {
+    icons.type = req.body.value;
+    icons.save();
+  })
+})
+
+router.post("/updateicons", (req, res) => {
+  console.log("BODY", req.body);
+  Icons.findOne( {creatorId: req.body.creatorId, type: req.body.type}).then((icons) => {
+      icons.state = req.body.state ;
+      icons.save();
+  });
+});
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

@@ -62,9 +62,7 @@ if (tags.length!=freq.length!=achievement.length){
         icons_total[i]-=1;}
       }
     }
-    console.log(freq);
-    console.log(achievement);
-    console.log(min);
+    console.log(freq_indexed);
     /*
     0 hand
     1 Lung (aerobic)
@@ -93,10 +91,10 @@ if (tags.length!=freq.length!=achievement.length){
     let icon_col3_index= [9,9,9];
     
     for (let i = 0; i < icons_total.length; i++) {
-      if (icons_total[i] !=0){icons.push(icons_total[i]);icons_index.push(i);}
+      if (freq_indexed[i] !=0){icons.push(icons_total[i]);icons_index.push(i);}
     
     }
-  
+    console.log(icons);
     //_index
     const num = icons.length;
     //console.log(icons, icons_index);
@@ -146,7 +144,8 @@ if (tags.length!=freq.length!=achievement.length){
     //console.log(icon_col1, icon_col2,icon_col3);
     //console.log(icon_col1_index, icon_col2_index,icon_col3_index);
 
-
+console.log (icon_col1_index, icon_col2_index, icon_col3_index);
+console.log(icon_col1, icon_col2, icon_col3);
     //Mapping cols data to icons   
     const images_col1 = icon_col1.map((image,index) => {
            return <Icon icon_id={icon_col1_index[index]} progress={icon_col1[index]}/>
