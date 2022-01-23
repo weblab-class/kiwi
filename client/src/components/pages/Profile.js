@@ -62,8 +62,8 @@ const Profile = (props) => {
         </div>
       </div>
       
-      <div className="Container">
-        <div className=" u-textCenter Outer-Box">
+      {/* <div className="Container"> */}
+        <div className=" u-textCenter Outer-Box3">
           <h4 className="Profile-subTitle">bio</h4>
           <ButtonModal userId = {props.userId} bio = {bio}></ButtonModal>
         </div>
@@ -74,7 +74,7 @@ const Profile = (props) => {
           <div className="Posts">4 ways to improve your flexibility</div>
           <div className ="Posts">2 ways to get your heart pumping</div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 };

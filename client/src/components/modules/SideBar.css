@@ -1,60 +1,58 @@
 .SideBar-container {
   background-color: rgb(0, 0, 0);
-  width:100%;
-  height:100%;
-}
-
-/*
-height: 100%;
+  height:100vh;
+  position: fixed;
+ }
+  
+ /*
+ height: 100%;
   width: 240px;
   position: fixed;
   background-color: rgb(0, 0, 0);
   overflow-x: hidden;
   overflow-y: hidden;
-*/
-
-
-.SideBar-linkContainer {
-  margin-top: .1vh;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  display: inline-block;
+ */
+  
+   
+ .SideBar-linkContainer {
+   display:grid;
+  margin-top: 10vh;
+  margin-left:16px;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns:column;
   float:center;
   padding: 25px;
   overflow-y:scroll;
-  display:grid;
-  flex-direction:column;
-}
-
-.SideBar-linkContainer div {
+ }
+  
+ .SideBar-linkContainer div {
   padding: 24px;
   font-size: 2vw;
   display: inline-block;
   text-align: left;
   }
-.SideBar-linkContainer a:hover {
+ .SideBar-linkContainer a:hover {
   color: #96ca4f;
-}
-
-.SideBar-link, .SideBar-link:visited {
+ }
+  
+ .SideBar-link, .SideBar-link:visited {
   color: #f1f1f1;
   opacity: 0.6;
-
   
-}
-/*.SideBar-link:active{
+  }
+ /*.SideBar-link:active{
   color: #96ca4f;
   text-decoration: none;
   display: inline-block;
   text-align: left;
-}*/
-
-.SideBar-link:hover {
+ }*/
+  
+ .SideBar-link:hover {
   opacity: 0.8;
-}
-
-.SideBar-link.SideBar-login {
+ }
+  
+ .SideBar-link.SideBar-login {
   position: absolute;
   margin-top: 100px;
   height: 50px;
@@ -63,4 +61,5 @@ height: 100%;
   display:block;
   padding: 50px;
   float: center;
-}
+ }
+ 

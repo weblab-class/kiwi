@@ -97,6 +97,23 @@ router.post("/updateicons", (req, res) => {
   });
 });
 
+router.post("/goal", auth.ensureLoggedIn, (req, res) => {
+
+  const newGoal = new Goals({
+    creatorId: req.body.creatorId,
+    goalId: req.body.goalId,
+    goalContent: req.body.content,
+    goalTags: req.body.tags,
+    frequency: req.body.frequency,
+    minimum: req.body.minimum,
+    achievement: req.body.achievement,
+  });
+  {/* newgoal in GoalInput */}
+
+  console.log(req.body);
+  newGoal.save().then((goal) => res.send(goal));
+});
+
 router.get("/goals", (req, res) => {
   //Get mongoSchema from Stella, put file in models
   Goals.find({creatorId: req.query.creatorId}).then((goals) => {
@@ -110,6 +127,16 @@ router.get("/icons", (req, res) => {
     res.send(icons);
   });
 });
+
+router.post("/updateachievement", (req, res) => {
+  console.log("BODY", req.body);
+  Goals.findOne( {creatorId: req.body.creatorId, goalId: req.body.goalId}).then((goal) => {
+      goal.achievement = req.body.achievement  ;
+      goal.save();
+  });
+});
+
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

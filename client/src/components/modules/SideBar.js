@@ -18,9 +18,9 @@ class SideBar extends Component {
   render() {
     return (
 /*<div><img src={logo} alt="logo.png" /></div>*/
-      <nav className="SideBar-container"> 
+      <nav className="SideBar-container-linkContainer"> 
 
-       <div className="SideBar-linkContainer u-inlineBlock">
+      
         
           <div><Link to="/dashboard" className="SideBar-link">
             dashboard
@@ -54,7 +54,7 @@ class SideBar extends Component {
               profile
             </Link>
           )}</div>
-        </div>
+        
         
       </nav>
     );

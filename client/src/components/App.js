@@ -3,7 +3,6 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
-import NavBar from "./modules/NavBar.js";
 
 import SideBar from "./modules/SideBar.js";
 import "../utilities.css";
@@ -27,24 +26,24 @@ import 'foundation-sites/dist/css/foundation.min.css';
     super(props);
     this.state = {
       userId:
-"61de2bdd74de5c1c88b927e1",
+undefined,
     };
   }
 
   componentDidMount() {
-    get("/api/whoami").then((user) => {
-      if (user._id) {
+    //get("/api/whoami").then((user) => {
+      //if (user._id) {
         // they are registed in the database, and currently logged in.
-        this.setState({ userId: user._id });
-      }
-    });
+       // this.setState({ userId: user._id });
+     //}
+    //});
   }
   handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({userId: user._id});
-      post("/api/initsocket", { socketid: socket.id });
+      //post("/api/initsocket", { socketid: socket.id });
     });
   };
 
@@ -55,27 +54,28 @@ import 'foundation-sites/dist/css/foundation.min.css';
   };
   
   render() {
-  return (
-    
-    <>
-    <div className="App-container">
-    <div className="b1">
-    <SideBar handleLogin={this.handleLogin}
-          handleLogout={this.handleLogout}
-          userId={this.state.userId} />
-    </div>
-    <div>
-      <Router>
-        <Skeleton path="/dashboard" userId={this.state.userId}/>
-        <Profile path="/profile/:userId" />
-        <NotFound default />
-      </Router>
-     </div>
-     </div>
-    </>
-  );
-  }
 
+    return (
+  
+      <>
+      <div className="App-container">
+      <div className="b1">
+      <SideBar handleLogin={this.handleLogin}
+            handleLogout={this.handleLogout}
+            userId={this.state.userId} />
+      </div>
+      <div>
+        <Router>
+          <Skeleton path="/dashboard"/>
+        
+          <NotFound default />
+        </Router>
+       </div>
+       </div>
+      </>
+    );
+    }
+   
  }
 
 export default App;

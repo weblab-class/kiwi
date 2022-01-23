@@ -15,6 +15,8 @@
 
 // validator runs some basic checks to make sure you've set everything up correctly
 // this is a tool provided by staff, so you don't need to worry about it
+
+require('dotenv').config();
 const validator = require("./validator");
 validator.checkSetup();
 
@@ -33,9 +35,8 @@ const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = "mongodb+srv://admin:5ZOSaO911R7PdqDS@cluster0.3q3w9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-// TODO change database name to the name you chose
-const databaseName = "Cluster0";
+const mongoConnectionURL = process.env.ATLAS_SRV;
+const databaseName = "Cluster0"
 
 // connect to mongodb
 mongoose
@@ -57,7 +58,7 @@ app.use(express.json());
 // set up a session, which will persist login data across requests
 app.use(
   session({
-    secret: "session-secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
@@ -95,7 +96,7 @@ app.use((err, req, res, next) => {
 });
 
 // hardcode port to 3000 for now
-const port = 3000;
+const port = process.env.PORT || 3000;
 const server = http.Server(app);
 socketManager.init(server);
 

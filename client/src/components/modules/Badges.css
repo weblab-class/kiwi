@@ -1,0 +1,39 @@
+.modal-body {
+  background-color: #fff;
+}
+
+.close {
+  color: #fff;
+}
+
+.btn-secondary {
+  /* padding: 50px 50px; */
+  position: absolute;
+  top: 600px;
+  left: 1080px;
+  line-height: 80px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 90px;
+  width: 200px;
+  background-color: #000;
+  border-color: #000;
+  border-radius: 40px;
+  font-size: 40px;
+}
+
+.btn-secondary:hover {
+  background-color: #99d98c;
+  border-color: #99d98c;
+}
+
+.btn-close {
+  display: flex;
+  flex-direction: column;
+  color: #99d98c;
+}
+
+.checkboxes {
+  padding: 10px;
+}

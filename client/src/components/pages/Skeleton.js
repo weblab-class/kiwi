@@ -6,8 +6,9 @@ import "./Skeleton.css";
 import Icon from "../modules/Icon.js";
 //import "../../../server/server.js";
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
-const GOOGLE_CLIENT_ID = "732721046468-lqep618inia61e4p3nlvn1jft5c58fp4.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "732721046468-8g0qe7o8qbddbvfkkrtu59tngop3dnh7.apps.googleusercontent.com";
 import { get } from "../../utilities";
+import GoalList from  "../modules/GoalList.js";
 
 class Skeleton extends Component {
   constructor(props) {
@@ -21,12 +22,12 @@ class Skeleton extends Component {
     document.title = "Dashboard";
     get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
     {this.setState({ goal_list: this.state.goal_list.concat(goals)})});
-    get(`/api/icons`, {creatorId:this.props.userId}).then((icons) => 
-    {this.setState({ icons: this.state.icons.concat(icons)})});
+    //get(`/api/icons`, {creatorId:this.props.userId}).then((icons) => 
+    //{this.setState({ icons: this.state.icons.concat(icons)})});
   }
   render (){
     console.log(icons);
-    post(`/api/icons`, {type:1});
+    //post(`/api/icons`, {type:1});
     // Parsing data
     let tags=[];
     let freq = [];
@@ -38,31 +39,42 @@ class Skeleton extends Component {
       achievement.push(item.achievement);
       min.push(item.minimum);
 });
-  console.log (freq,achievement,min);
+tags=[["hand", "legs", "eyes"]];
+freq= [3];
+achievement = [3];
+min = [2];
+  console.log (tags,freq,achievement,min);
     //Indexing data
     let freq_indexed = [0,0,0,0,0,0,0,0,0];
     let achievement_indexed=[0,0,0,0,0,0,0,0,0];
     let min_indexed=[0,0,0,0,0,0,0,0,0];
     const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core']
-  
+
     for (let i = 0; i < tags.length; i++) {
     for (let j = 0; j < tags[i].length; j++) {
+      console.log(tags[i][j]);
     let place = icon_type.indexOf(tags[i][j]);
-    freq_indexed[place]+=freq[j];
-    achievement_indexed[place]+=achievement[j];
-    min_indexed[place]+=min[j];
+    console.log(place);
+    freq_indexed[place]+=freq[i];
+    achievement_indexed[place]+=achievement[i];
+    min_indexed[place]+=min[i];
+    console.log(j);
     }
     }
+    console.log (freq_indexed,achievement_indexed,min_indexed);
     let icons_total = [0,0,0,0,0,0,0,0,0];
     for (let i = 0; i < freq_indexed.length; i++) {
-      if (freq_indexed[i]==achievement_indexed[i]){
-        if(icons_total[i]!=4){
+      if (freq_indexed[i]==achievement_indexed[i] && freq_indexed[i]!=0){
+        if(icons_total[i]<4){
         icons_total[i]+=1;}
-      }if (achievement_indexed[i]<=min_indexed[i]){
+      }else if (achievement_indexed[i]<min_indexed[i]){
         if(icons_total[i]>0){
         icons_total[i]-=1;}
       }
+      console.log (icons_total);
     }
+      
+
     /*
     console.log(freq);
     console.log(achievement);
@@ -99,7 +111,7 @@ class Skeleton extends Component {
       if (icons_total[i] !=0){icons.push(icons_total[i]);icons_index.push(i);}
     
     }
-  
+    console.log(icons_total);
     //_index
     const num = icons.length;
     //console.log(icons, icons_index);
@@ -160,15 +172,27 @@ class Skeleton extends Component {
     const images_col3 = icon_col3.map((image,index) => {
            return <Icon icon_id={icon_col3_index[index]} progress={icon_col3[index]}/>
         });
+        
   return (
-    
-    // Calling Icon.js
-    <> 
-    <div className="page">
-    <div className="Icon-allContainer"> {images_col1}</div>
-    <div className="Icon-allContainer"> {images_col2}</div>
-    <div className="Icon-allContainer"> {images_col3}</div>
-    </div>
+  
+          // Calling Icon.js
+          <>
+          
+          <div className="page">
+          <div>
+          <div className="Icon-allContainer"> {images_col1}</div>
+          </div>
+          <div>
+          <div className="Icon-allContainer"> {images_col2}</div>
+          </div> 
+          <div>
+          <div className="Icon-allContainer"> {images_col3}</div>
+          </div>
+           <div>
+    <GoalList userId = {this.props.userId}></GoalList></div>
+
+         </div>
+         
     </>
   );
   }

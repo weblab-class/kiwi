@@ -1,0 +1,30 @@
+
+
+
+.page{
+  display: grid;    
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  padding: 0 4px;
+}
+
+.Icon-allContainer{
+  width:100%;
+  
+
+
+  
+}
+.column {
+  padding:2px;
+  width: 30%;
+  padding: 0px;
+  float:left;
+  margin:0px;
+  
+}
+
+
+/*
+Fix CSS for Skeleton.js , Icon.js
+(icons too small)
+*/
