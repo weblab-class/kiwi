@@ -5,7 +5,7 @@ const IconsSchema = new mongoose.Schema({
   // Ask from Stella
   creatorId: String,
 	type: Number,
-	state: { type: Number, default: -1, min:0, max:4 },
+	state: { type: Number, default: -1},
 
 
 });

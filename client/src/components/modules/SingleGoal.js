@@ -21,8 +21,11 @@ const SingleGoal = (props) => {
             creatorId: props.goal.creatorId,
             goalId: props.goal.goalId,
             achievement: props.goal.achievement
+            
         }
-       
+       if(today.getDay() == 2 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
+           newAchievement.achievement = 0;
+       }
         post("/api/updateachievement", newAchievement);
         /*const newIcon= {
             creatorId: props.goal.creatorId,
@@ -50,6 +53,9 @@ const SingleGoal = (props) => {
             let typei = icon_type.indexOf(props.goal.goalTags[i]);
            // console.log(icon);
         //console.log(icon_state);
+        var today = new Date();
+    //if(today.getDay() == 2 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
+      
         if(props.goal.achievement==props.goal.frequency && icon_indexed[typei] <4){
             const newIcon= {
             creatorId: props.goal.creatorId,
@@ -67,7 +73,7 @@ const SingleGoal = (props) => {
         }
         post("/api/icons", newIcon);
         }
-        
+    //}
           }
           //console.log(icon_state);}
     

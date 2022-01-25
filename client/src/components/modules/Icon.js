@@ -52,6 +52,8 @@ class Icon extends Component {
         };
       }
   render() {
+      if(this.props.progress==0){ // No progress
+            return ( <div className="Icon-container"><img src={jar} alt="jar.jpg"/></div>);}
     if(this.props.icon_id==0){
         if(this.props.progress==0){ // No progress
           return ( <div className="Icon-container"><img src={jar} alt="jar.jpg"/></div>);}
@@ -152,8 +154,8 @@ class Icon extends Component {
           else if (this.props.progress==4){
               return ( <div className="Icon-container"><img src={core4} alt="icon.jpg"/></div>);}
     }
-
-        return ( <div className="Icon-container"><img src={empty} alt="empty"/></div>);
+    
+    return ( <div className="Icon-container"><img src={empty} alt="empty"/></div>);
     
     /*if (this.props.progress==2){
     return ( <div className="Icon-container"><img src={hand} alt="icon.jpg"/></div>);}
