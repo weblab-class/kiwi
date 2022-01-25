@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const IconsSchema = new mongoose.Schema({
   // Ask from Stella
   creatorId: String,
-	icon_id: Number,
-	state: Number,	
+	type: Number,
+	state: { type: Number, default: -1, min:0, max:4 },
 
 
 });

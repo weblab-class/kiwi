@@ -99,6 +99,37 @@ router.post("/goal", auth.ensureLoggedIn, (req, res) => {
   newGoal.save().then((goal) => res.send(goal));
 });
 
+
+
+router.post("/icons", (req, res) => {
+  const newIcon = {
+    creatorId: req.body.creatorId,
+    type: req.body.type,
+    state: req.body.state,
+  }
+  console.log(req.body);
+  //newIcon.save().then((icon) => res.send(icon));
+  Icons.updateOne({creatorId: req.body.creatorId, type: req.body.type}, 
+    newIcon, {"upsert": true, "useFindAndModify":false}).then(replacedDocument => {
+    if(replacedDocument) {
+      console.log(`Successfully replaced the following document: ${replacedDocument}.`)
+    } else {
+      console.log("No document matches the provided query.")
+    }
+  });
+  /*Icons.findOne( {creatorId: req.body.creatorId, type: req.body.type}).then((icon) => {
+    icon.state = req.body.state  ;
+    icon.save();
+  });*/
+  //newIcon.save().then((icons) => res.send(icons));
+});
+router.post("/updatestate", (req, res) => {
+  console.log("BODY", req.body);
+  Icons.findOne( {creatorId: req.body.creatorId, type: req.body.type}).then((icon) => {
+      icon.state = req.body.state ;
+      icon.save();
+  });
+});
 router.get("/goals", (req, res) => {
   //Get mongoSchema from Stella, put file in models
   Goals.find({creatorId: req.query.creatorId}).then((goals) => {
@@ -114,27 +145,28 @@ router.post("/updateachievement", (req, res) => {
   });
 });
 
+router.post("/updatestate", (req, res) => {
+  console.log("BODY", req.body);
+  Icons.findOne( {creatorId: req.body.creatorId, type: req.body.type}).then((icon) => {
+      icon.state = req.body.state ;
+      icon.save();
+  });
+});
+
 router.get("/icons", (req, res) => {
   Icons.find({creatorId: req.query.creatorId}).then((icons) => {
     res.send(icons);
   });
 });
 
-router.post("/icons", auth.ensureLoggedIn, (req, res) => {
-  console.log(`Received icon states from ${req.user.name}`);
-  Icons.findById(req.user._id).then((icons) => {
-    icons.type = req.body.value;
-    icons.save();
-  })
-})
-
-router.post("/updateicons", (req, res) => {
-  console.log("BODY", req.body);
-  Icons.findOne( {creatorId: req.body.creatorId, type: req.body.type}).then((icons) => {
-      icons.state = req.body.state ;
-      icons.save();
+router.get("/singleicon", (req, res) => {
+  Icons.find({creatorId: req.query.creatorId, type: req.query.type}).then((icons) => {
+    console.log(res.json(res));
+    res.send(icons);
   });
 });
+
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

@@ -82,8 +82,8 @@ const GoalInput = (props) => {
             goalId: await getGoalId(),
             content: value, 
             tags: tagValues(tags), 
-            frequency: frequency.value, 
-            minimum: minimum.value,
+            frequency: parseInt(frequency.value), 
+            minimum: parseInt(minimum.value),
             achievement: 0,
         };
         // console.log(NewGoal)
@@ -92,6 +92,18 @@ const GoalInput = (props) => {
             props.addNewGoal(goal);
 
         });
+        let types = tagValues(tags);
+        const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core'];
+        for (let i = 0; i<types.length; i++){
+            const NewIcon= {
+            creatorId: props.userId,
+            type: icon_type.indexOf(types[i]),
+            state:{ type: Number, default: 0, min:0, max:4 },
+        }   
+          console.log(NewIcon);
+          post(`/api/icons`, NewIcon);
+        }
+        
       };
       
     return (

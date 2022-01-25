@@ -9,6 +9,7 @@ import "./GoalList.css";
  */
 
 const SingleGoal = (props) => {
+
     const update = (checked) => {
         if (checked) {
             props.goal.achievement++;
@@ -21,7 +22,56 @@ const SingleGoal = (props) => {
             goalId: props.goal.goalId,
             achievement: props.goal.achievement
         }
-        post("/api/updateachievement", newAchievement)
+       
+        post("/api/updateachievement", newAchievement);
+        /*const newIcon= {
+            creatorId: props.goal.creatorId,
+            type: 2,
+            state: 4,
+            
+        }*/
+        //post("/api/updatestate", newIcon);
+    
+        const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core']
+        console.log(props.icons);
+        let icon_indexed = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+        let i_type = [];
+        let i_state = [];
+        props.icons.forEach(function (item, index) {
+            i_type.push(item.type);
+            i_state.push(item.state);
+            console.log(i_type,i_state);
+  });
+        for (let i = 0; i< i_type.length; i++){
+            icon_indexed[i_type[i]] = i_state[i];
+        }
+        console.log(i_type,i_state);
+        for (let i = 0; i< props.goal.goalTags.length; i++){
+            let typei = icon_type.indexOf(props.goal.goalTags[i]);
+           // console.log(icon);
+        //console.log(icon_state);
+        if(props.goal.achievement==props.goal.frequency && icon_indexed[typei] <4){
+            const newIcon= {
+            creatorId: props.goal.creatorId,
+            type: typei,
+            state: icon_indexed[typei]+1,
+        }
+        console.log(newIcon.state);
+        console.log("increase");
+        post("/api/icons", newIcon);
+        } else if (props.goal.achievement<props.goal.minimum && icon_indexed[typei] >0){
+            const newIcon= {
+            creatorId: props.goal.creatorId,
+            type: typei,
+            state: icon_indexed[typei]-1,
+        }
+        post("/api/icons", newIcon);
+        }
+        
+          }
+          //console.log(icon_state);}
+    
+    
     }
 
     const checkboxes = [];

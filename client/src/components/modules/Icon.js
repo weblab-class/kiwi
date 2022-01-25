@@ -7,11 +7,16 @@ import hand2 from '../../public/hand2.gif';
 import hand3 from '../../public/hand3.gif';
 import hand4 from '../../public/hand4.gif';
 
+import lung1 from '../../public/lung1.gif';
+import lung2 from '../../public/lung2.gif';
 import lung3 from '../../public/lung3.gif';
 import lung4 from '../../public/lung4.gif';
-
+import heart1 from '../../public/heart1.gif';
+import heart2 from '../../public/heart2.gif';
 import heart3 from '../../public/heart3.gif';
 import heart4 from '../../public/heart4.gif';
+import brain1 from '../../public/brain1.gif';
+import brain2 from '../../public/brain2.gif';
 import brain3 from '../../public/brain3.gif';
 import brain4 from '../../public/brain4.gif';
 import plant1 from '../../public/plant1.gif';
@@ -26,9 +31,12 @@ import leg1 from '../../public/leg1.gif';
 import leg2 from '../../public/leg2.gif';
 import leg3 from '../../public/leg3.gif';
 import leg4 from '../../public/leg4.gif';
+import bicep1 from '../../public/bicep1.gif';
+import bicep2 from '../../public/bicep2.gif';
 import bicep3 from '../../public/bicep3.gif';
 import bicep4 from '../../public/bicep4.gif';
-
+import core1 from '../../public/core1.gif';
+import core2 from '../../public/core2.gif';
 import core3 from '../../public/core3.gif';
 import core4 from '../../public/core4.gif';
 import "./Icon.css";
@@ -59,9 +67,9 @@ class Icon extends Component {
         if(this.props.progress==0){ // No progress
             return ( <div className="Icon-container"><img src={jar} alt="jar.jpg"/></div>);}
             else if(this.props.progress==1){ 
-              return ( <div className="Icon-container"><img src={hand1} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={lung1} alt="icon.jpg"/></div>);}
           else if (this.props.progress==2){
-              return ( <div className="Icon-container"><img src={hand2} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={lung2} alt="icon.jpg"/></div>);}
           else if (this.props.progress==3){
               return ( <div className="Icon-container"><img src={lung3} alt="icon.jpg"/></div>);}
           else if (this.props.progress==4){
@@ -70,9 +78,9 @@ class Icon extends Component {
         if(this.props.progress==0){ // No progress
             return ( <div className="Icon-container"><img src={jar} alt="jar.jpg"/></div>);}
             else if(this.props.progress==1){ 
-              return ( <div className="Icon-container"><img src={hand1} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={heart1} alt="icon.jpg"/></div>);}
           else if (this.props.progress==2){
-              return ( <div className="Icon-container"><img src={hand2} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={heart2} alt="icon.jpg"/></div>);}
           else if (this.props.progress==3){
               return ( <div className="Icon-container"><img src={heart3} alt="icon.jpg"/></div>);}
           else if (this.props.progress==4){
@@ -81,9 +89,9 @@ class Icon extends Component {
         if(this.props.progress==0){ // No progress
             return ( <div className="Icon-container"><img src={jar} alt="jar.jpg"/></div>);}
             else if(this.props.progress==1){ 
-              return ( <div className="Icon-container"><img src={hand1} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={brain1} alt="icon.jpg"/></div>);}
           else if (this.props.progress==2){
-              return ( <div className="Icon-container"><img src={hand2} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={brain2} alt="icon.jpg"/></div>);}
           else if (this.props.progress==3){
               return ( <div className="Icon-container"><img src={brain3} alt="icon.jpg"/></div>);}
           else if (this.props.progress==4){
@@ -125,9 +133,9 @@ class Icon extends Component {
         if(this.props.progress==0){ // No progress
             return ( <div className="Icon-container"><img src={jar} alt="jar.jpg"/></div>);}
             else if(this.props.progress==1){ 
-              return ( <div className="Icon-container"><img src={hand1} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={bicep1} alt="icon.jpg"/></div>);}
           else if (this.props.progress==2){
-              return ( <div className="Icon-container"><img src={hand2} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={bicep2} alt="icon.jpg"/></div>);}
           else if (this.props.progress==3){
               return ( <div className="Icon-container"><img src={bicep3} alt="icon.jpg"/></div>);}
           else if (this.props.progress==4){
@@ -136,16 +144,17 @@ class Icon extends Component {
         if(this.props.progress==0){ // No progress
             return ( <div className="Icon-container"><img src={jar} alt="jar.jpg"/></div>);}
             else if(this.props.progress==1){ 
-              return ( <div className="Icon-container"><img src={hand1} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={core1} alt="icon.jpg"/></div>);}
           else if (this.props.progress==2){
-              return ( <div className="Icon-container"><img src={hand2} alt="icon.jpg"/></div>);}
+              return ( <div className="Icon-container"><img src={core2} alt="icon.jpg"/></div>);}
           else if (this.props.progress==3){
               return ( <div className="Icon-container"><img src={core3} alt="icon.jpg"/></div>);}
           else if (this.props.progress==4){
               return ( <div className="Icon-container"><img src={core4} alt="icon.jpg"/></div>);}
-    }else {
-        return ( <div className="Icon-container"><img src={empty} alt="empty"/></div>);
     }
+
+        return ( <div className="Icon-container"><img src={empty} alt="empty"/></div>);
+    
     /*if (this.props.progress==2){
     return ( <div className="Icon-container"><img src={hand} alt="icon.jpg"/></div>);}
     else {

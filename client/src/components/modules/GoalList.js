@@ -9,7 +9,7 @@ import SingleGoal from "./SingleGoal";
 
 const GoalList = (props) => {
     const [goals, setGoals] = useState([]);
-
+const [icons, setIcons] = useState([]);
     const addNewGoal = (goalObj) => {
         {
             setGoals(goals.concat([goalObj]));
@@ -22,6 +22,8 @@ const GoalList = (props) => {
         //console.log("PROPS, USERID", props.userId);
         //console.log("GOALS LIST", goals);
         });
+        get("/api/icons", { creatorId: props.userId }).then((icons) => {
+          setIcons(icons);});
       }, []);
 
     return (
@@ -37,6 +39,7 @@ const GoalList = (props) => {
                 <SingleGoal
                     key={i}
                     goal = {goal}
+                    icons = {icons}
                 />
             ))} 
             <div>
