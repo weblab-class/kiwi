@@ -43,10 +43,11 @@ const SingleGoal = (props) => {
 
     return (
         <div className="Goal-container">
-            <div className="flex-container">
-                {props.goal.goalContent}
-                <div>  </div>
-                {checkboxes}     
+            <div className="goal-container-inner">
+                <span className="goal-title">{props.goal.goalContent}</span>
+                <div className="checkboxes-container">  
+                    {checkboxes}
+                </div>     
             </div>
         </div>
 

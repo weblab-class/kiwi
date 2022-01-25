@@ -31,9 +31,6 @@ class SideBar extends Component {
          <div><Link to="/progress/" className="SideBar-link">
            progress
          </Link></div>
-         <div><Link to="/friends/" className="SideBar-link">
-           friends
-         </Link></div>
          <div>{this.props.userId ? (
            <GoogleLogout
              clientId={GOOGLE_CLIENT_ID}
@@ -54,6 +51,11 @@ class SideBar extends Component {
          <div>{this.props.userId && (
            <Link to={`/profile/${this.props.userId}`} className="SideBar-link">
              profile
+           </Link>
+         )}</div>
+          <div>{this.props.userId && (
+           <Link to={`/friends/${this.props.userId}`} className="SideBar-link">
+             friends
            </Link>
          )}</div>
        </div>

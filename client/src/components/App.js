@@ -3,16 +3,16 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
-
 import SideBar from "./modules/SideBar.js";
+import Friends from "./pages/Friends.js";
 import "../utilities.css";
-
 import "./App.css";
 import { socket } from "../client-socket.js";
-
 import { get, post } from "../utilities";
-
 import 'foundation-sites/dist/css/foundation.min.css';
+import Chatbook from "./modules/Chatbook.js";
+import Chat from "./modules/Chat.js";
+
 
 
 /**
@@ -67,6 +67,7 @@ import 'foundation-sites/dist/css/foundation.min.css';
         <Router>
           <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
           <Profile path="/profile/:userId" />
+          <Friends path="/friends/:userId" userId={this.state.userId} />
           <NotFound default />
         </Router>
        </div>

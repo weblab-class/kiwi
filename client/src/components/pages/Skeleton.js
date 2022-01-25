@@ -172,7 +172,7 @@ if (tags.length!=freq.length!=achievement.length){
          <div>
          <div className="Icon-allContainer"> {images_col3}</div>
          </div>
-          <div>
+          <div className="GoalList-Container">
           <GoalList userId = {this.props.userId}></GoalList></div>
         </div>
        
