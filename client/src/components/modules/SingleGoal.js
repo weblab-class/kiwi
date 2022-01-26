@@ -30,6 +30,14 @@ const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps',
         } else {
             props.goal.achievement--;
         }
+         newAchievement = {
+            creatorId: props.goal.creatorId,
+            goalId: props.goal.goalId,
+            achievement: props.goal.achievement
+            
+        }
+    console.log("posted");
+    //post("/api/updateachievement", newAchievement);   
 
         
 
@@ -94,16 +102,8 @@ const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps',
         
     }
     
-    /*var today = new Date();
-    if(today.getSeconds() == 0 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
-        props.achievement=0;
-        let newAchievement = {
-            creatorId: props.goal.creatorId,
-            goalId: props.goal.goalId,
-            achievement: 0,
-            
-        }
-        post("/api/updateachievement", newAchievement);*/
+    
+     
 
     const checkboxes = [];
     for (var i=0; i < props.goal.frequency; i++) {
@@ -122,14 +122,7 @@ const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps',
     
     }
     
-    newAchievement = {
-            creatorId: props.goal.creatorId,
-            goalId: props.goal.goalId,
-            achievement: props.goal.achievement
-            
-        }
-    console.log("posted");
-    //post("/api/updateachievement", newAchievement);   
+   
     return (
         <div className="Goal-container">
             <div className="flex-container">

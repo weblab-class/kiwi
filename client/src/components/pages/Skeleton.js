@@ -67,7 +67,11 @@ class Skeleton extends Component {
     document.title = "Dashboard";
     //get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
     //{this.setState({ goal_list: this.state.goal_list.concat(goals)})});
+    var today = new Date();
+    console.log(today.getDay());
+    if(today.getDay() == 3 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
     post(`/api/restartachievement`, {creatorId:this.props.userId});
+    }
     get(`/api/icons`, {creatorId:this.props.userId}).then((icons) => 
     {this.setState({ icons_list: this.state.icons_list.concat(icons)})});
     
