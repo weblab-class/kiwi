@@ -1,0 +1,41 @@
+.modal-body {
+  background-color: #fff !important;
+}
+
+.close {
+  color: #fff !important;
+}
+
+.btn-success {
+  /* padding: 50px 50px; */
+  /* line-height: 100px; */
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 10%;
+  width: 5%;
+  background-color: #000 !important;
+  border-color: #000 !important;
+  border-radius: 30%;
+  font-size: 25px;
+}
+
+.btn-success:hover {
+  background-color: #99d98c !important;
+  border-color: #99d98c !important;
+}
+
+.btn-close {
+  display: flex;
+  flex-direction: column;
+  color: #99d98c !important;
+}
+
+.story-modal {
+  width: 50vw; /* Occupy the 90% of the screen width */
+  max-width: 50vw;
+  height: 47vw; /* Occupy the 90% of the screen width */
+  max-height: 47vw;
+  padding: 1vw;
+  /* max-height: 80vw; */
+}

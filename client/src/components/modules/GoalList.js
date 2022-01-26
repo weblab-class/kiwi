@@ -20,7 +20,7 @@ const GoalList = (props) => {
         get("/api/goals", { creatorId: props.userId }).then((goals) => {
           setGoals(goals);
         //console.log("PROPS, USERID", props.userId);
-        //console.log("GOALS LIST", goals);
+        console.log("GOALS LIST", goals);
         });
       }, []);
 

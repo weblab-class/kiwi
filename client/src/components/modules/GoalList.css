@@ -112,3 +112,29 @@ input[type="checkbox"] + label::before {
   height: 1em;
   border: 0.05em solid black;
 }
+
+.goal-container-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.goal-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.checkboxes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.Tracker-container {
+  /* margin-left: 80%; */
+  width: 18%;
+}

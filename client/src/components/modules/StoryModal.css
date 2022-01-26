@@ -1,0 +1,39 @@
+.modal-body {
+  background-color: #fff;
+}
+
+.close {
+  color: #fff;
+}
+
+.btn-link {
+  /* padding: 50px 50px; */
+  /* position: absolute;
+  top: 30px;
+  left: 1000px; */
+  /* line-height: 100px; */
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  /* height: 130px;
+  width: 130px;
+  background-color: #000;
+  border-color: #000;
+  border-radius: 70px; */
+  font-size: 15px;
+}
+
+.btn-link:hover {
+  color: #99d98c;
+}
+
+.btn-close {
+  display: flex;
+  flex-direction: column;
+  color: #99d98c;
+}
+
+.checkboxes {
+  padding: 10px;
+}

@@ -34,7 +34,6 @@ class ButtonModals extends React.Component {
         fetch(`/api/user?userId=${this.props.userId}`)
         .then(response => response.json())
         .then(data => {
-            console.log(this.state.bio)
             if(data.bio === "" || data.bio === undefined) {
                 this.setState({bio: "add your bio here"});
             } else {
@@ -69,7 +68,8 @@ class ButtonModals extends React.Component {
     render() {
         return (
             <div>
-                <Button variant = "tertiary" data-backdrop = "false" onClick={()=>{this.handleModal()}}>{this.state.bio}</Button>
+                <Button variant = "danger" data-backdrop = "false" onClick={()=>{this.handleModal()}}
+                disabled={this.props.userId !== this.props.myUserId}>{this.state.bio}</Button>
                 <Modal 
                     show={this.state.show} 
                     onHide={()=>this.handleModal2()}

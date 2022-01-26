@@ -12,7 +12,8 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const Goals = require("./models/goals");
-
+const Story = require("./models/story");
+const Comment = require("./models/comment");
 
 // import authentication library
 const auth = require("./auth");
@@ -46,7 +47,6 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 router.get("/user", (req, res) => {
-  console.log("1", req.query.userId);
   User.findById(req.query.userId).then((user) => {
     res.send(user);
   })
@@ -59,10 +59,8 @@ router.post("/bio", auth.ensureLoggedIn, (req, res) => {
     user.bio = req.body.value;
     user.save();
   });
-
-  // return "";
-  // return res.json();
 })
+
 
 router.post("/interests", auth.ensureLoggedIn, (req, res) => {
   console.log(`Received interests from ${req.user.name}: ${req.body.value}`);
@@ -112,6 +110,74 @@ router.post("/updateachievement", (req, res) => {
       goal.save();
   });
 });
+
+router.post("/story", auth.ensureLoggedIn, (req, res) => {
+  const newStory = new Story({
+    creatorId: req.user._id,
+    creatorName: req.user.name,
+    creatorImage: req.user.image,
+    storyTitle: req.body.title,
+    storyImage: req.body.image,
+    storyContent: req.body.content,
+    storyLocation: req.body.location,
+    storyTags: req.body.tags,
+  });
+  newStory.save().then((story) => res.send(story));
+});
+
+router.get("/stories", (req, res) => {
+//   // empty selector means get all documents
+    Story.find({}).then((stories) => res.send(stories));
+});
+
+router.get("/myStories", (req, res) => {
+  //Get mongoSchema from Stella, put file in models
+  Story.find({creatorId: req.query.creatorId}).then((stories) => {
+    res.send(stories);
+  });
+});
+
+router.get("/comment", (req, res) => {
+  Comment.find({ parent: req.query.parent }).then((comments) => {
+    res.send(comments);
+  });
+});
+
+router.post("/comment", auth.ensureLoggedIn, (req, res) => {
+  const newComment = new Comment({
+    creator_id: req.user._id,
+    creator_name: req.user.name,
+    parent: req.body.parent,
+    content: req.body.content,
+  });
+
+  newComment.save().then((comment) => res.send(comment));
+});
+
+
+router.post("/following", auth.ensureLoggedIn, (req, res) => {
+  console.log("APIFOLLOWING", req.body.following);
+  User.findById({_id: req.body.myUserId}).then((user) => {
+    user.following = req.body.following;
+    user.save();
+  });
+})
+
+
+router.post("/followers", auth.ensureLoggedIn, (req, res) => {
+  User.findById({_id: req.body.userId}).then((user) => {
+    user.followers = req.body.followers;
+    user.save();
+  });
+})
+
+router.post("/friends", auth.ensureLoggedIn, (req, res) => {
+  User.findById({_id: req.body.userId}).then((user) => {
+    user.friends = req.body.friends;
+    user.save();
+  });
+})
+
 
 
 // anything else falls to this "not found" case

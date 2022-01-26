@@ -1,7 +1,5 @@
 .modal-body {
   background-color: #fff;
-  height: 300px;
-  max-height: 100%;
   text-align: left;
 }
 
@@ -9,22 +7,23 @@
   color: #fff;
 }
 
-.btn-tertiary {
-  background-color: black;
-  border-color: #000;
-  border-radius: 30%;
+.btn-danger {
+  background-color: rgb(55, 200, 211);
+  /* border-color: #000; */
+  /* border-radius: 30%; */
+  border: rgb(55, 200, 211);
   width: 100%;
   color: white;
   text-align: center;
   margin: 0 auto;
 }
 
-.btn-tertiary:hover {
+.btn-danger:hover {
   background-color: #99d98c;
   border-color: #99d98c;
 }
 
-.btn-tertiary-close {
+.btn-danger-close {
   color: #99d98c;
 }
 

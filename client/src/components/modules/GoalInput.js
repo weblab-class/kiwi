@@ -23,6 +23,7 @@ const customStyles = {
     "&:hover": {
         // Overwrittes the different states of border
         borderColor: state.isFocused ? "#99D98C" : "#000000",
+    width: '300px'
     },
     })
 };
@@ -86,7 +87,7 @@ const GoalInput = (props) => {
             minimum: minimum.value,
             achievement: 0,
         };
-        // console.log(NewGoal)
+        console.log(NewGoal)
         post("/api/goal", NewGoal).then((goal) => {
             console.log("*****", props.addNewGoal)
             props.addNewGoal(goal);

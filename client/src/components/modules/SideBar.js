@@ -18,9 +18,9 @@ class SideBar extends Component {
  render() {
    return (
 /*<div><img src={logo} alt="logo.png" /></div>*/
-     <nav className="SideBar-container">
+     <nav className="SideBar-linkContainer">
  
-      <div className="SideBar-linkContainer u-inlineBlock">
+      <div className="u-flexColumn u-flex-alignCenter">
       
       <div>{this.props.userId && (
            <Link to={`/dashboard/${this.props.userId}`} className="SideBar-link">
@@ -31,7 +31,7 @@ class SideBar extends Component {
          <div><Link to="/progress/" className="SideBar-link">
            progress
          </Link></div>
-         <div><Link to="/friends/" className="SideBar-link">
+         <div><Link to={`/friends/${this.props.userId}`} className="SideBar-link">
            friends
          </Link></div>
          <div>{this.props.userId ? (
@@ -50,11 +50,15 @@ class SideBar extends Component {
              onFailure={(err) => console.log(err)}
              className="SideBar-link"
            />
-         )}</div>
+         )}
+
+         </div>
          <div>{this.props.userId && (
-           <Link to={`/profile/${this.props.userId}`} className="SideBar-link">
+           <div onClick={() => {
+             window.location.href = `/profile/${this.props.userId}` 
+           }}className="SideBar-link">
              profile
-           </Link>
+           </div>
          )}</div>
        </div>
       

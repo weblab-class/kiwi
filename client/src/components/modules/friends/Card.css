@@ -1,0 +1,115 @@
+.StoriesList {
+  width: 100%;
+  height: 650px;
+  overflow-y: auto;
+}
+
+.Card-container {
+  /* border: var(--darkgrey) 1px solid;
+  border-radius: var(--xs);
+  border: 2px solid black;
+  margin-top: var(--m); */
+  width: 15%;
+
+  color: #000;
+  border: 2px solid black;
+  font-size: 20px;
+  padding: 4px !important;
+  border-radius: 15px;
+  margin: 15px;
+}
+
+.Card-container:first-of-type {
+  margin-top: var(--l);
+}
+
+.Card-story,
+.Card-storyUser {
+  font-size: 20px;
+  font-weight: 400;
+  grid-area: name;
+}
+
+.Card-storyTitle {
+  font-size: 25px;
+  margin: var(--s) 0 0;
+  text-align: center;
+}
+
+.Card-storyImage {
+  /* width: 100%;
+  height: 50%; */
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+  /* padding: 0; */
+}
+
+.Card-storyContent {
+  margin: 10px;
+  font-size: 20px;
+}
+
+.Card-storyLocation {
+}
+
+.Card-storyTags {
+  width: 15%;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  grid-area: tags;
+}
+
+.Card-commentSection {
+  background-color: black;
+  border-top: 1px solid var(--darkgrey);
+  padding: 0px !important;
+  border-radius: 15px;
+}
+
+.Card-commentBody {
+  margin: 0 0 var(--s);
+  font-size: 15px;
+  font-weight: 400;
+  color: white;
+}
+
+.Card-commentName {
+  font-size: 15px;
+  color: white;
+  padding: 3px;
+}
+
+.Card-commentName:hover {
+  color: #96ca4f;
+}
+
+.Profile-Pic {
+  overflow: hidden;
+  border-radius: 50%;
+  width: 15%;
+  height: 15%;
+  grid-area: pic;
+}
+
+.Card-inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+}
+
+/* .Card-container-grid {
+  display: grid;
+  height: 20%;
+  width: 20%;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: 2fr 2fr;
+  grid-template-areas:
+    "pic name"
+    "pic tags";
+} */
