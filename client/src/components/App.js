@@ -68,7 +68,11 @@ import Chat from "./modules/Chat.js";
       <div>
         <Router>
           <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
+<<<<<<< HEAD
           <Profile path="/profile/:userId" myUserId = {this.state.userId}/>
+=======
+          <Profile path="/profile/:userId" myUserId={this.state.userId} />
+>>>>>>> 3af5644d7204b9749a18206c1b110dd42399b169
           <Friends path="/friends/:userId" userId={this.state.userId} />
           <NotFound default />
         </Router>

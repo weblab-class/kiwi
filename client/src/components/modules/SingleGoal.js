@@ -1,5 +1,5 @@
 //import { post } from "jquery";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { get, post } from "../../utilities";
 import Tracker from "./Tracker.js";
 import "./GoalList.css";
@@ -45,6 +45,7 @@ const SingleGoal = (props) => {
     //    checkboxes.push(<input key={i} checked={isChecked} type="checkbox" onChange={handleOnChange}/>)
     // }
 
+    console.log("singlegoal rendering")
     return (
         <div className="Goal-container">
             <div className="goal-container-inner">

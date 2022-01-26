@@ -23,24 +23,15 @@ const customStyles = {
     "&:hover": {
         // Overwrittes the different states of border
         borderColor: state.isFocused ? "#99D98C" : "#000000",
-    width: '300px'
     },
     })
 };
 
-const GoalInput = (props) => {
+const GoalInputEdit = (props) => {
     const[value, setValue] = useState("");
     const[tags, setTags] = useState([]);
     const[frequency, setFrequency] = useState(0);
     const[minimum, setMinimum] = useState(0);
-
-    {/*}
-    const addNewGoal = (goalObj) => {
-        {
-            setGoals(goals.concat([goalObj]));
-        };
-    };
-*/}
 
     useEffect(() => {
         get("/api/goals", { creatorId: props.userId }).then((goals) => {
@@ -84,34 +75,19 @@ const GoalInput = (props) => {
         return values
     }
 
-    const getGoalId = async () => {
-        const goals = await get("/api/goals", { creatorId: props.userId });     
-        //console.log("LIST of GOALS", goals);
-        return goals.length + 1;
-    }
-    
-
-    const addGoal = async () => {
-        console.log(props.userId)
-        console.log(value)
-        console.log(tags)
-        console.log(frequency)
-        console.log(minimum)
+    const addGoal = () => {
         const NewGoal = { 
             creatorId: props.userId, 
-            goalId: await getGoalId(),
+            goalId: props.goalId,
             content: value, 
             tags: tagValues(tags), 
             frequency: frequency.value, 
             minimum: minimum.value,
-            achievement: 0,
         };
-        console.log(NewGoal)
-        post("/api/goal", NewGoal).then((goal) => {
-            console.log("*****", props.addNewGoal)
-            props.addNewGoal(goal);
-
-        });
+        console.log("updating")
+        post("/api/editGoal", NewGoal).then(() => {
+            window.location.reload()
+        })     
       };
       
     return (
@@ -176,7 +152,7 @@ const GoalInput = (props) => {
                 className="Submit-button"
                 value="Submit"
                 onClick={addGoal}>
-            save
+            update
             </button>
             </div>
             </p>
@@ -187,4 +163,4 @@ const GoalInput = (props) => {
 
 
 
-export default GoalInput;
+export default GoalInputEdit;

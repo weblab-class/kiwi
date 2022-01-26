@@ -1,0 +1,83 @@
+.Goal-title {
+  color: #000;
+  font-size: 20px;
+}
+
+.Tags-title {
+  color: #000;
+  font-size: 20px;
+}
+
+.Frequency-title {
+  color: #000;
+  font-size: 20px;
+}
+
+.Minimum-title {
+  color: #000;
+  font-size: 20px;
+}
+
+.GoalInput-container {
+  border-color: #000;
+  border-style: solid;
+  border-width: 1.5px;
+  border-radius: 15px;
+  background-color: #fff;
+  height: 40px;
+  width: 400px;
+}
+
+input[type="text"] {
+  font-size: 15px;
+}
+
+.select {
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.select:focus,
+.select:hover {
+  outline: none;
+  border: 1px solid #bbb;
+}
+
+.select:option {
+  background: #fff;
+}
+
+.Tag-Select {
+  width: 400px;
+}
+
+.Frequency-Select {
+  width: 100px;
+}
+
+.Minimum-Select {
+  width: 100px;
+}
+
+.Submit-button {
+  color: #fff;
+  background-color: #000;
+  border-radius: 50px;
+  height: 40px;
+  width: 80px;
+  font-size: 16px;
+}
+
+.Select-control {
+  height: 70px;
+}
+
+.Submit-button:hover {
+  background: #99d98c;
+  border-color: #99d98c;
+}
+
+[type="button"] {
+  border-radius: 100px;
+}

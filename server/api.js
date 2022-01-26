@@ -50,7 +50,6 @@ router.post("/initsocket", (req, res) => {
 router.get("/user", (req, res) => {
   User.findById(req.query.userId).then((user) => {
     res.send(user);
-  console.log("HERE");
   })
   .catch((error) => console.error(error));
 });
@@ -99,9 +98,28 @@ router.post("/goal", auth.ensureLoggedIn, (req, res) => {
   newGoal.save().then((goal) => res.send(goal));
 });
 
+router.post("/editGoal", (req, res) => {
+  Goals.findOne({creatorId: req.body.creatorId, goalId: req.body.goalId}).then((goal) => {
+    goal.goalContent = req.body.content,
+    goal.frequency = req.body.frequency,
+    goal.goalTags = req.body.tags,
+    goal.minimum = req.body.minimum,
+    goal.save().then(() => {
+      res.send({})
+    })
+  })
+})
+
 router.get("/goals", (req, res) => {
   //Get mongoSchema from Stella, put file in models
   Goals.find({creatorId: req.query.creatorId}).then((goals) => {
+    res.send(goals);
+  });
+});
+
+router.get("/goalId", (req, res) => {
+  //Get mongoSchema from Stella, put file in models
+  Goals.find({creatorId: req.query.creatorId, goalId: req.query.goalId}).then((goals) => {
     res.send(goals);
   });
 });

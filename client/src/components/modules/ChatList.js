@@ -33,12 +33,18 @@ const ChatList = (props) => {
   }
 
   const offlineFriends = []
+  if (onlineFriends.length == 0) {
+    for (var i=0; i < friends.length; i++) {
+      offlineFriends.push(friends[i]);
+    }
+  } else {
   for (var i=0; i < friends.length; i++) {
     for (var j=0; j < onlineFriends.length; j++) {
       if (friends[i]._id == onlineFriends[j]._id) {
         break;
       }
       offlineFriends.push(friends[i])
+      }
     }
   }
 
