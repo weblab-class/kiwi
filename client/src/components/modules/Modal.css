@@ -25,8 +25,8 @@
 }
 
 .btn-primary:hover {
-  background-color: #99d98c;
-  border-color: #99d98c;
+  background-color: #99d98c !important;
+  border-color: #99d98c !important;
 }
 
 .btn-close {

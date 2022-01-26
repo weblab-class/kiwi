@@ -112,12 +112,6 @@ input[type="checkbox"] + label::before {
   height: 1em;
   border: 0.05em solid black;
 } */
-
-.goal-container-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
 .goal-title {
   margin-bottom: 10px;
 }
@@ -132,9 +126,11 @@ input[type="checkbox"] + label::before {
 }
 
 .goal-container-inner {
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  border-radius: 20px;
 }
 
 .goal-title {

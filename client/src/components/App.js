@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
-import Feed from "./pages/Feed.js";
+import Feed from "./modules/friends/Feed.js";
 
 import SideBar from "./modules/SideBar.js";
 import Friends from "./pages/Friends.js";
@@ -68,7 +68,7 @@ import Chat from "./modules/Chat.js";
       <div>
         <Router>
           <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
-          <Profile path="/profile/:userId" />
+          <Profile path="/profile/:userId" myUserId = {this.state.userId}/>
           <Friends path="/friends/:userId" userId={this.state.userId} />
           <NotFound default />
         </Router>

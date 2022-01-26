@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {get} from "../../utilities"
-import Card from "../modules/friends/Card.js";
-import NewStoryModal from "../modules/friends/NewStoryModal.js";
-import Filter from "../modules/friends/Filter.js";
-import "../../utilities.css";
+import {get} from "../../../utilities"
+import Card from "./Card.js";
+import NewStoryModal from "./NewStoryModal.js";
+import Filter from "./Filter.js";
+import "../../../utilities.css";
 
 /**
  * Feed is a component of the firends page.
@@ -66,8 +66,10 @@ const Feed = (props) => {
     // storiesList = <div>No stories!</div>;
   }
   return (
-    <>
-      <Filter handleChange = {handleChange} value = {filters}/>
+    <> 
+      <div style = {{width: '5%'}}>
+        <Filter handleChange = {handleChange} value = {filters}/>
+      </div>
       {props.userId && <NewStoryModal addNewStory={addNewStory} />}
       <div className = "StoriesList">
         {storiesList}
