@@ -43,13 +43,12 @@ import 'foundation-sites/dist/css/foundation.min.css';
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({userId: user._id});
       post("/api/initsocket", { socketid: socket.id });
-      window.location.reload();
     });
   };
 
    handleLogout = () => {
     this.setState({userId: undefined});
-    post("/api/logout").then(() => {window.location.href = "/logout";});
+    post("/api/logout").then(() => {window.location.href = "/";});
 
   };
   
@@ -68,7 +67,7 @@ import 'foundation-sites/dist/css/foundation.min.css';
         <Router>
           <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
           <Profile path="/profile/:userId" />
-          <LoginPage  default/>
+          <LoginPage default />
         </Router>
        </div>
        </div>
