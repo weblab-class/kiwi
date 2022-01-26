@@ -21,12 +21,10 @@ const Profile = (props) => {
   const [interests, setInterests] = useState([]);
   const [image, setImage] = useState("");
   const [status, setStatus] = useState("follow");
-  const [following, setFollowing] = useState([]);
-  const [myFollowers, setMyFollowers] = useState([]);
-  const [followers, setFollowers] = useState([]);
+  const [myFollowing, setMyFollowing] = useState([]);
+  const [theirFollowing, setTheirFollowing] = useState([]);
   const [myFriends, setMyFriends] = useState([]);
-  const [yourFriends, setYourFriends] = useState([]);
-  const [titles, setTitles] = useState([]);
+  const [theirFriends, setTheirFriends] = useState([]);
   const [stories, setStories] = useState([]);
 
 
@@ -41,17 +39,13 @@ const Profile = (props) => {
         setBio(userObj.bio);
         setInterests(userObj.interests);
         setImage(userObj.image);
-        setFollowers(userObj.followers);
-        setYourFriends(userObj.friends);
+        setTheirFollowing(userObj.following);
+        setTheirFriends(userObj.friends);
 
         get("/api/user", { userId: props.myUserId }).then((myUserObj) => {
           setMyUser(myUserObj);
-          console.log("MYSUERMYSUER", myUserObj)
-          setFollowing(myUserObj.following);
-          setMyFollowers(myUserObj.followers);
-          setMyFriends(myUserObj.frsiends);
-          console.log("following", myUserObj.following);
-          console.log("user._id", props.userId);
+          setMyFollowing(myUserObj.following)
+          setMyFriends(myUserObj.friends);
           if (myUserObj.following.map((f)=>(f._id)).includes(""+props.userId)){
             setStatus("following")
           } else{
@@ -64,17 +58,12 @@ const Profile = (props) => {
           console.log("STORIES", stories)
         })
     }) 
-    
 
-    // get("/api/myStories", { creatorId: props.userId }).then((stories) => {
-    //   setTitles(stories.map((story)) => <StoryModal story={story}/> )
-    // })
   }
-
   }, [props.myUserId]);
 
   if (!user) {
-    return (<div> Loading! </div>);
+    return (<div>  </div>);
   }
 
   const onChange = (value) => {
@@ -84,92 +73,55 @@ const Profile = (props) => {
 
   const changeStatus = () => {
     if (status === "follow"){
+      console.log("HERE")
       setStatus("following");
       const newObj = {"name": user.name, "_id": props.userId}
-      const tempFollowing = following.concat([newObj])
-      setFollowing(tempFollowing)
+      const tempFollowing = myFollowing.concat([newObj])
+      setMyFollowing(tempFollowing)
       const newFollowing = {
-        myUserId: props.myUserId,
+        userId: props.myUserId,
         following: tempFollowing,
       }
       post("/api/following", newFollowing)
       console.log("FOLLOWING", newFollowing)
 
-      // console.log("NEWFOLLOWERS USER", myUser)
-      // console.log("NEWFOLLOWERS followers", followers)
-      console.log("myuser", myUser)
-      const newObjMe = {"name": myUser.name, "_id": props.myUserId}
-      const tempFollowers = followers.concat([newObjMe])
-      setFollowers(tempFollowers)
-      // console.log("NEWFOLLOWERS", followers)
-        const newFollowers = {
-          userId: props.userId,
-          followers: tempFollowers,
-        }
+      // if (theirFollowing.map((f)=>(f._id)).includes(""+props.myUserId)) {
+      //   console.log("FRIENDS")
+      //   console.log("their name", user.name)
+      //   console.log("my name", myUser.name)
+      //   console.log("id", props.myUserId)
+      //   console.log("my friends", myFriends)
+      //   console.log("your friends", theirFriends)
+      //   const newObj2 = {"name": user.name, "_id": props.userId}
+      //   const tempMyFriends = myFriends.concat([newObj2]);
+      //   console.log("temp", tempMyFriends)
+      //   setMyFriends(tempMyFriends)
+      //   const myNewFriends = {
+      //     userId: props.myUserId,
+      //     friends: tempMyFriends,
+      //   }
+      //   console.log("MYNEWFRIENDS", myNewFriends)
+      //   post("/api/friends", myNewFriends)
+      // }
 
-      post("/api/followers", newFollowers).then(() => {
-        if (myFollowers.map((f)=>(f._id)).includes(""+props.userId) && tempFollowing.map((f) => (f._id)).includes(""+props.userId)){
-          console.log("friends")
-          const tempMyFriends = myFriends.concat([{"name": user.name, "_id": props.userId}]);
-          const tempYourFriends = yourFriends.concat([{"name": myUser.name, "_id": props.myUserId}])
-          const myNewFriends = {
-            userId: props.myUserId,
-            friends: tempMyFriends,
-          }
-          post("/api/friends", myNewFriends)
-  
-          const yourNewFriends = {
-            userId: props.userId,
-            friends: tempYourFriends,
-          }
-          post("/api/friends", yourNewFriends)
-        }
-      })
-
-      console.log("FOLLOWERS", myFollowers)
-      console.log("mapping2", myFollowers.map((f)=>(f._id)))
-      console.log("FOLLOWING", tempFollowing)
-      console.log("mapping", tempFollowing.map((f)=>(f._id)))
-    
-      console.log("" + props.userId)
-      if (myFollowers.map((f)=>(f._id)).includes(""+props.userId) && tempFollowing.map((f) => (f._id)).includes(""+props.userId)){
-        console.log("friends")
-        const tempMyFriends = myFriends.concat([{"name": user.name, "_id": props.userId}]);
-        const tempYourFriends = yourFriends.concat([{"name": myUser.name, "_id": props.myUserId}])
-        const myNewFriends = {
-          userId: props.myUserId,
-          friends: tempMyFriends,
-        }
-        post("/api/friends", myNewFriends)
-
-        const yourNewFriends = {
-          userId: props.userId,
-          friends: tempYourFriends,
-        }
-        post("/api/friends", yourNewFriends)
-
-      }
+      //   const tempTheirFriends = theirFriends.concat([{"name": myUser.name, "_id": props.myUserId}])
+      //   setTheirFriends(tempTheirFriends)
+      //   const theirNewFriends = {
+      //     userId: ""+props.userId,
+      //     friends: tempTheirFriends,
+      //   }
+      //   post("/api/friends", theirNewFriends)
+      // }
 
     } else{
-      console.log("FOLLOWING DELETE", following)
       setStatus("follow")
-      console.log("After setstatus", following)
-      const tempFollowing = following.filter((followingPerson) => {return followingPerson._id !== user._id})
-      setFollowing(tempFollowing)
+      const tempFollowing = myFollowing.filter((followingPerson) => {return followingPerson._id !== user._id})
+      setMyFollowing(tempFollowing)
         const newFollowing = {
-          myUserId: props.myUserId,
+          userId: props.myUserId,
           following: tempFollowing,
         }
       post("/api/following", newFollowing)
-
-      console.log("FOLLOWING DELETE", followers)
-      const tempFollowers = followers.filter((follower) => {return follower._id !== myUser._id})
-      setFollowers(tempFollowers)
-      const newFollowers = {
-          userId: props.userId,
-          followers: tempFollowers,
-        }
-      post("/api/followers", newFollowers)
     }
   }
 

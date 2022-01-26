@@ -11,13 +11,13 @@
   /* position: absolute;
   top: 30px;
   left: 1000px; */
-  margin: 0% 0% 0% 90%;
+  /* margin: 0% 0% 0% 90%;
   margin-right: 70px;
   margin-bottom: -20px;
-  line-height: 10px;
   display: flex;
   text-align: center;
-  justify-content: center;
+  justify-content: center; */
+  line-height: 10px;
   height: 30px;
   width: 70px;
   background-color: black;

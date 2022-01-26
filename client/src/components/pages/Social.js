@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FriendsChat from "../modules/FriendsChat.js";
 import Feed from "../modules/friends/Feed.js";
-import "./Friends.css"
+import "./Social.css"
 
 /**
  * Page component to display when at the "/chat" route
@@ -9,11 +9,11 @@ import "./Friends.css"
  * Proptypes
  * @param {string} userId id of current logged in user
  */
-const Friends = (props) => {
+const Social = (props) => {
   
   return (
     <>
-      <div className = "Friends-inline">
+      <div className = "Social-inline">
         <div>
           <Feed userId = {props.userId}></Feed>
         </div>
@@ -27,4 +27,4 @@ const Friends = (props) => {
   );
 }
 
-export default Friends;
+export default Social;

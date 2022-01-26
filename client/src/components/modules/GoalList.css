@@ -148,14 +148,14 @@ input[type="checkbox"] + label::before {
   gap: 8px;
 }
 
-<<<<<<< HEAD
 .Tracker-container {
   /* margin-left: 80%; */
   width: 18%;
-=======
+}
 .Goal-Edit {
+  padding: 10px 10px;
   display: flex;
   flex-direction: row;
-  align-items: center;
->>>>>>> 3af5644d7204b9749a18206c1b110dd42399b169
+  justify-content: space-evenly;
+  /* align-items: center; */
 }

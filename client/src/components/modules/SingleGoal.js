@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { get, post } from "../../utilities";
 import Tracker from "./Tracker.js";
+import EditModal from "../modules/EditModal.js";
 import "./GoalList.css";
 
 /**
@@ -49,14 +50,18 @@ const SingleGoal = (props) => {
     return (
         <div className="Goal-container">
             <div className="goal-container-inner">
-                <div className="goal-title">{props.goal.goalContent}
-                {/* <div className="checkboxes-container">   */}
+                <div className="Goal-Edit">
+                    <span className="goal-title">{props.goal.goalContent}</span>
+                    <EditModal 
+                            userId = {props.userId}
+                            goal = {props.goal}
+                            goalId = {props.goal.goalId}
+                            addNewGoal={props.addNewGoal} 
+                            userId={props.userId}></EditModal>
                 <div className="Tracker-container">
                     <Tracker goal={props.goal}></Tracker>
+                    </div>
                 </div>
-                </div>
-                    {/* {checkboxes} */}
-                {/* </div>      */}
             </div>
         </div>
 

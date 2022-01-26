@@ -28,11 +28,8 @@ class SideBar extends Component {
            </Link>
          )}</div>
         
-         <div><Link to="/progress/" className="SideBar-link">
-           progress
-         </Link></div>
-         <div><Link to={`/friends/${this.props.userId}`} className="SideBar-link">
-           friends
+         <div><Link to={`/social/${this.props.userId}`} className="SideBar-link">
+           social
          </Link></div>
          <div>{this.props.userId ? (
            <GoogleLogout

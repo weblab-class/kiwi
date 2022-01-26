@@ -56,6 +56,7 @@ router.get("/user", (req, res) => {
 
 router.post("/bio", auth.ensureLoggedIn, (req, res) => {
   console.log(`Received a bio from ${req.user.name}: ${req.body.value}`);
+  console.log("BIO REQUEST", req.user._id)
   User.findById(req.user._id).then((user) => {
     user.bio = req.body.value; 
     // updating bio here, value called in post call in bio file
@@ -178,24 +179,28 @@ router.post("/comment", auth.ensureLoggedIn, (req, res) => {
 
 router.post("/following", auth.ensureLoggedIn, (req, res) => {
   console.log("APIFOLLOWING", req.body.following);
-  User.findById({_id: req.body.myUserId}).then((user) => {
+  User.findById(req.user._id).then((user) => {
     user.following = req.body.following;
     user.save();
   });
 })
 
 
-router.post("/followers", auth.ensureLoggedIn, (req, res) => {
-  User.findById({_id: req.body.userId}).then((user) => {
-    user.followers = req.body.followers;
-    user.save();
-  });
-})
+// router.post("/followers", auth.ensureLoggedIn, (req, res) => {
+//   User.findById({_id: req.body.userId}).then((user) => {
+//     user.followers = req.body.followers;
+//     user.save();
+//   });
+// })
 
 router.post("/friends", auth.ensureLoggedIn, (req, res) => {
-  User.findById({_id: req.body.userId}).then((user) => {
+  console.log("API FRIENDS")
+  console.log("type", req.body.userId)
+  User.findById(req.user._id).then((user) => {
+    console.log("user", user)
     user.friends = req.body.friends;
-    user.save();
+    user.update();
+
   });
 })
 

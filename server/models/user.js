@@ -7,7 +7,6 @@ const UserSchema = new mongoose.Schema({
   interests: Array,
   image: String,
   following: Array, 
-  followers: Array,
   friends: Array,
 });
 

@@ -14,20 +14,47 @@ import SingleUserOffline from "../modules/SingleUserOffline.js";
  * @param {(UserObject) => ()} setActiveUser function that takes in user, sets it to active
  */
 const ChatList = (props) => {
-  const[friends, setFriends] = useState([]);
+  const[following, setFollowing] = useState([]);
 
   console.log("CHATLIST USERID", props.userId)
+  const friends = []
   useEffect(() => {
     get("/api/user", { userId: props.userId }).then((userObj) => {
-        setFriends(userObj.friends);
+        setFollowing(userObj.following);
     })
     }, [])
+  
+  useEffect(() => {
+    if (typeof following !== 'undefined') {
+      console.log("LENGTH", following.length)
+      for (var i=0; i < following.length; i++) {
+          get("/api/user", {userId: following[i]._id}).then((followerUser) => {
+            console.log("follower user", followerUser)
+            const ids = followerUser.following.map(obj => obj._id)
+            console.log("ids", ids)
+            console.log("userid", props.userId)
+            if (ids.includes(props.userId)){
+              friends.push(followerUser.following)
+              console.log("friends", friends)
+            }
+          }
+          
+        )
+
+      }
+    }
+  }, [])
+
+
+  console.log("ACTIVEUSERS", friends, friends.length, props.activeUsers.length)
 
   const onlineFriends = []
-  for (var i=0; i < friends.length; i++) {
+  for (var i=0; i <= friends.length; i++) {
     for (var j=0; j < props.activeUsers.length; j++) {
+      console.log("IN THE LOOP", props.activeUsers[j]._id, friends[i]._id)
       if (props.activeUsers[j]._id === friends[i]._id) {
         onlineFriends.push(friends[i])
+        console.log("ONLINEFRIENDS", onlineFriends)
       }
     }
   }

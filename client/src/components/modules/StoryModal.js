@@ -6,6 +6,15 @@ import {Button, Modal} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./StoryModal.css";
 import "./GoalList.css";
+import hand4 from '../../public/hand4.gif';
+import bicep4 from '../../public/bicep4.gif';
+import brain4 from '../../public/brain4.gif';
+import core4 from '../../public/core4.gif';
+import eye4 from '../../public/eye4.gif';
+import leg4 from '../../public/leg4.gif';
+import lung4 from '../../public/lung4.gif';
+import plant4 from '../../public/plant4.gif';
+import heart4 from '../../public/heart4.gif';
 
 const customStyles = {
 
@@ -37,6 +46,32 @@ class StoryModal extends React.Component {
         this.setState({show: !this.state.show})
     }
     render() {
+        const tags = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core'];
+
+        const map = {
+          'hand': hand4,
+          'heart': heart4,
+          'brain': brain4,
+          'lungs': lung4,
+          'legs': leg4,
+          'eyes': eye4,
+          'core': core4,
+          'biceps': bicep4,
+          'misc': plant4
+        };
+      
+    const images = []
+    if (typeof this.props.story.storyTags !== 'undefined') {
+        const values = this.props.story.storyTags.map(object => object.label);
+        tags.map((tag) => {
+            if (values.includes(tag)) {
+            images[tag] = map[tag];
+            }else{
+            images[tag] = "";
+            }
+        })
+    }
+        
         return (
             <div>
                 <Button variant="link" onClick={()=>{this.handleModal()}}>{this.props.story.storyTitle}</Button>
@@ -58,7 +93,6 @@ class StoryModal extends React.Component {
                             {this.props.story.creatorName}
                             </Link>
                         </div>
-{/* 
                         <div className = "Card-storyTags">
                                 <img src={images['heart']}></img>
                                 <img src={images['brain']}></img>
@@ -69,7 +103,7 @@ class StoryModal extends React.Component {
                                 <img src={images['biceps']}></img>
                                 <img src={images['misc']}></img>
                                 <img src={images['hand']}></img>
-                        </div> */}
+                        </div>
                         </div>
 
                         <p className = "Card-storyLocation">{this.props.story.storyLocation}</p>
