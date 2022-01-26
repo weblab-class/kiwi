@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import { Router } from "@reach/router";
-import NotFound from "./pages/NotFound.js";
+import LoginPage from "./pages/LoginPage.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
 
@@ -43,12 +43,13 @@ import 'foundation-sites/dist/css/foundation.min.css';
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({userId: user._id});
       post("/api/initsocket", { socketid: socket.id });
+      window.location.reload();
     });
   };
 
    handleLogout = () => {
     this.setState({userId: undefined});
-    post("/api/logout").then(() => {window.location.href = "/dashboard";});
+    post("/api/logout").then(() => {window.location.href = "/logout";});
 
   };
   
@@ -67,7 +68,7 @@ import 'foundation-sites/dist/css/foundation.min.css';
         <Router>
           <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
           <Profile path="/profile/:userId" />
-          <NotFound default />
+          <LoginPage  default/>
         </Router>
        </div>
        </div>

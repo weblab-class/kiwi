@@ -61,13 +61,16 @@ class Skeleton extends Component {
     this.state = {
       goal_list: [],
       icons_list:[],
+       time: Date.now(),
     };
   }
+  
   componentDidMount() {
     document.title = "Dashboard";
     //get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
     //{this.setState({ goal_list: this.state.goal_list.concat(goals)})});
     var today = new Date();
+    this.interval = setInterval(() => this.setState({ time: Date.now() }), 100000);
     console.log(today.getDay());
     if(today.getDay() == 3 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
     post(`/api/restartachievement`, {creatorId:this.props.userId});
@@ -76,10 +79,15 @@ class Skeleton extends Component {
     {this.setState({ icons_list: this.state.icons_list.concat(icons)})});
     
     
+    
   }
-  
+  componentWillUnmount() {
+  clearInterval(this.interval);
+  //post(`/api/restartachievement`, {creatorId:this.props.userId});
+}
   
   render (){
+    //window.location.reload();
     /*
     var today = new Date();
     if(today.getMinutes() == 25 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
@@ -181,7 +189,11 @@ class Skeleton extends Component {
     const images_col3 = icon_col3.map((image,index) => {
            return <Icon icon_id={icon_col3_index[index]} progress={icon_col3[index]}/>
         });
-
+    var today=new Date();
+    if(today.getSeconds() == 3 ){
+      window.location.reload();
+    }
+    console.log("render");
         return (
           // Calling Icon.js
           /*

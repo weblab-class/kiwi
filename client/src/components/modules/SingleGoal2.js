@@ -59,6 +59,7 @@ const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps',
         }
         //console.log(newIcon.state);
         console.log("increase");
+        
        
         } else if (props.goal.achievement<props.goal.minimum && props.goal.achievement>0&& icon_indexed[typei] >0){
             newIcon= {
@@ -73,12 +74,12 @@ const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps',
             state: icon_indexed[typei],
         }}
      post("/api/icons", newIcon);
+     
           }
     
     
     
     }
-    
     
     if(props.goal.achievement==0){
       
