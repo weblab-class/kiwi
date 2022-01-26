@@ -35,6 +35,7 @@ const GoalList = (props) => {
             <div className="Outer-Box">
             {goals.map((goal, i) => (
                 <SingleGoal
+                    userId = {props.userId}
                     key={i}
                     goal = {goal}
                 />
@@ -42,10 +43,8 @@ const GoalList = (props) => {
             <div>
             </div>
         </div>
-        <Badges>
-                    addNewGoal={addNewGoal} 
-                    userId={props.userId}
-                </Badges>
+        <Badges addNewGoal={addNewGoal} 
+                    userId={props.userId}/>
         </nav>
 
     );

@@ -32,6 +32,7 @@ const DropDownTag = (props, {styles, label}) => {
             options={options} 
             //value={props.value}
             minMenuHeight={500}
+            value={props.value}
             onChange={props.onChange}/>
         </div>
 }
@@ -44,6 +45,7 @@ const DropDownFrequency = (props, {styles, label}) => {
             closeMenuOnSelect={false} 
             options={options2} 
             minMenuHeight={500}
+            value={props.value}
             onChange={props.onChange}/>
         </div>
 }
@@ -56,6 +58,7 @@ const DropDownMinimum = (props, {styles, label}) => {
             closeMenuOnSelect={false} 
             options={options2} 
             minMenuHeight={500}
+            value={props.value}
             onChange={props.onChange}
             />
         </div>

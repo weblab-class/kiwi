@@ -1,0 +1,47 @@
+.modal-body {
+  background-color: #fff;
+}
+
+.close {
+  color: #fff;
+}
+
+.btn-warning {
+  padding: 10px 10px;
+  /* position: absolute;
+  top: 30px;
+  left: 1000px; */
+  margin: 0% 0% 0% 90%;
+  margin-right: 70px;
+  margin-bottom: -20px;
+  line-height: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 30px;
+  width: 70px;
+  background-color: black;
+  border-color: #000;
+  border-radius: 20px;
+  font-size: 18px;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #99d98c;
+  border-color: #99d98c;
+}
+
+.btn-close {
+  display: flex;
+  flex-direction: column;
+  color: #99d98c;
+}
+
+.checkboxes {
+  padding: 10px;
+}
+
+.spacing {
+  padding: 20px;
+}
