@@ -53,10 +53,10 @@ import 'foundation-sites/dist/css/foundation.min.css';
   };
   
   render() {
-
     return (
   
       <>
+      
       <div className="App-container">
       <div className="b1">
       <SideBar handleLogin={this.handleLogin}

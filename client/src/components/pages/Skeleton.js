@@ -65,26 +65,39 @@ class Skeleton extends Component {
   }
   componentDidMount() {
     document.title = "Dashboard";
-    get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
-    {this.setState({ goal_list: this.state.goal_list.concat(goals)})});
-    var today = new Date();
-    if(today.getDay() == 2 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
-      get(`/api/icons`, {creatorId:this.props.userId}).then((icons) => 
+    //get(`/api/goals`, {creatorId:this.props.userId}).then((goals) => 
+    //{this.setState({ goal_list: this.state.goal_list.concat(goals)})});
+    post(`/api/restartachievement`, {creatorId:this.props.userId});
+    get(`/api/icons`, {creatorId:this.props.userId}).then((icons) => 
     {this.setState({ icons_list: this.state.icons_list.concat(icons)})});
-    }
+    
     
   }
+  
+  
   render (){
-    
+    /*
+    var today = new Date();
+    if(today.getMinutes() == 25 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
+        let newAchievement = {
+            creatorId: props.goal.creatorId,
+            goalId: props.goal.goalId,
+            achievement: 0,
+            
+        }
+        console.log("set to zero");
+        post("/api/updateachievement", newAchievement);
+        }
+    */
     //IconComputation(this.state.goal_list, this.props.userId); // Move this into if
 
-    console.log(this.state.icons_list);
+    //console.log(this.state.icons_list);
     //FROM HERE: param = icons_total
     let icons_total=[-1,-1,-1,-1,-1,-1,-1,-1]; // If -1, empty
     this.state.icons_list.forEach(function (item, index){
       icons_total[item.type] = item.state;
     });
-    console.log(icons_total);
+    //console.log(icons_total);
     
     const index = (0,1,2,3,4,5,6,7,8,9);
     let icons = []
@@ -103,7 +116,7 @@ class Skeleton extends Component {
     
     }
     const num = icons.length;
-    console.log(icons_total);
+    //console.log(icons_total);
     // Params: icon_col#, icon_col#_index, num
     if (num==1){icon_col2[1]=icons[0];
                 icon_col2_index[1]=icons_index[0]}   
@@ -153,8 +166,8 @@ class Skeleton extends Component {
     if(this.state.icons_list.length==0 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
       icon_col2[1]=0;
     }
-    console.log (icon_col1_index, icon_col2_index, icon_col3_index);
-    console.log(icon_col1, icon_col2, icon_col3);
+    //console.log (icon_col1_index, icon_col2_index, icon_col3_index);
+    //console.log(icon_col1, icon_col2, icon_col3);
     const images_col1 = icon_col1.map((image,index) => {
            return <Icon icon_id={icon_col1_index[index]} progress={icon_col1[index]}/>
         });
@@ -167,7 +180,16 @@ class Skeleton extends Component {
 
         return (
           // Calling Icon.js
+          /*
+<head>
+          <meta httpEquiv="refresh" content="604800"/>
+          </head>
+          */
+         
+        
          <>
+         
+           
         
          <div className="page">
          <div>
@@ -179,11 +201,9 @@ class Skeleton extends Component {
          <div>
          <div className="Icon-allContainer"> {images_col3}</div>
          </div>
-          <div>
-          <GoalList userId = {this.props.userId}></GoalList></div>
-        </div>
-       
-   </>
+          <div><GoalList userId = {this.props.userId}></GoalList></div>
+        </div>    
+      </>
  );
 
   }

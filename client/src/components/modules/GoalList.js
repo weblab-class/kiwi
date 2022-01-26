@@ -17,6 +17,7 @@ const [icons, setIcons] = useState([]);
     };
 
     useEffect(() => {
+
         get("/api/goals", { creatorId: props.userId }).then((goals) => {
           setGoals(goals);
         //console.log("PROPS, USERID", props.userId);
@@ -38,7 +39,16 @@ const [icons, setIcons] = useState([]);
             {goals.map((goal, i) => (
                 <SingleGoal
                     key={i}
-                    goal = {goal}
+                    goal = {{
+            creatorId: goal.creatorId,
+  goalId: goal.goalId,
+  goalContent: goal.goalContent,
+  frequency: goal.frequency,
+  minimum: goal.minimum,
+  achievement: 0,
+  goalTags:goal.goalTags,
+            
+        }}
                     icons = {icons}
                 />
             ))} 

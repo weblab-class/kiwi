@@ -98,14 +98,14 @@ const GoalInput = (props) => {
             const NewIcon= {
             creatorId: props.userId,
             type: icon_type.indexOf(types[i]),
-            state:{ type: Number, default: 0, min:0, max:4 },
+            state:{ type: Number, default: 0},
         }   
           console.log(NewIcon);
           post(`/api/icons`, NewIcon);
         }
         
       };
-      
+     
     return (
         <div>
             <p>

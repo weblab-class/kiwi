@@ -139,10 +139,12 @@ router.get("/goals", (req, res) => {
 
 router.post("/updateachievement", (req, res) => {
   console.log("BODY", req.body);
-  Goals.findOne( {creatorId: req.body.creatorId, goalId: req.body.goalId}).then((goal) => {
-      goal.achievement = req.body.achievement  ;
-      goal.save();
-  });
+  Goals.updateOne( {creatorId: req.body.creatorId, goalId: req.body.goalId}, {achievement:req.body.achievement })
+});
+
+router.post("/restartachievement", (req, res) => {
+  console.log("BODY", req.body);
+  Goals.updateMany( {creatorId: req.query.creatorId}, {achievement:0});
 });
 
 router.post("/updatestate", (req, res) => {

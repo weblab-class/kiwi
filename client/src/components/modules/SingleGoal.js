@@ -9,7 +9,21 @@ import "./GoalList.css";
  */
 
 const SingleGoal = (props) => {
-
+const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core']
+        //console.log(props.icons);
+        let icon_indexed = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+        let i_type = [];
+        let i_state = [];
+        props.icons.forEach(function (item, index) {
+            i_type.push(item.type);
+            i_state.push(item.state);
+           // console.log(i_type,i_state);
+  });
+        for (let i = 0; i< i_type.length; i++){
+            icon_indexed[i_type[i]] = i_state[i];
+        }
+        let newIcon={};
+        let newAchievement={};
     const update = (checked) => {
         if (checked) {
             props.goal.achievement++;
@@ -17,68 +31,79 @@ const SingleGoal = (props) => {
             props.goal.achievement--;
         }
 
-        const newAchievement = {
-            creatorId: props.goal.creatorId,
-            goalId: props.goal.goalId,
-            achievement: props.goal.achievement
-            
-        }
-       if(today.getDay() == 2 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
-           newAchievement.achievement = 0;
-       }
-        post("/api/updateachievement", newAchievement);
-        /*const newIcon= {
-            creatorId: props.goal.creatorId,
-            type: 2,
-            state: 4,
-            
-        }*/
-        //post("/api/updatestate", newIcon);
-    
-        const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core']
-        console.log(props.icons);
-        let icon_indexed = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
-        let i_type = [];
-        let i_state = [];
-        props.icons.forEach(function (item, index) {
-            i_type.push(item.type);
-            i_state.push(item.state);
-            console.log(i_type,i_state);
-  });
-        for (let i = 0; i< i_type.length; i++){
-            icon_indexed[i_type[i]] = i_state[i];
-        }
-        console.log(i_type,i_state);
+        
+
+         
+       // post("/api/updateachievement", newAchievement);
+        
+    //console.log(i_type,i_state);
         for (let i = 0; i< props.goal.goalTags.length; i++){
             let typei = icon_type.indexOf(props.goal.goalTags[i]);
            // console.log(icon);
         //console.log(icon_state);
-        var today = new Date();
-    //if(today.getDay() == 2 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
+        
       
         if(props.goal.achievement==props.goal.frequency && icon_indexed[typei] <4){
-            const newIcon= {
+             newIcon= {
             creatorId: props.goal.creatorId,
             type: typei,
             state: icon_indexed[typei]+1,
         }
-        console.log(newIcon.state);
+        //console.log(newIcon.state);
         console.log("increase");
-        post("/api/icons", newIcon);
-        } else if (props.goal.achievement<props.goal.minimum && icon_indexed[typei] >0){
-            const newIcon= {
+       
+        } else if (props.goal.achievement<props.goal.minimum && props.goal.achievement>0&& icon_indexed[typei] >0){
+            newIcon= {
             creatorId: props.goal.creatorId,
             type: typei,
             state: icon_indexed[typei]-1,
         }
-        post("/api/icons", newIcon);
-        }
-    //}
+        console.log("decrease");
+        }else {newIcon= {
+            creatorId: props.goal.creatorId,
+            type: typei,
+            state: icon_indexed[typei],
+        }}
+     post("/api/icons", newIcon);
           }
-          //console.log(icon_state);}
+    
     
     
     }
+    
+    
+    if(props.goal.achievement==0){
+      
+        //console.log(i_type,i_state);
+        for (let i = 0; i< props.goal.goalTags.length; i++){
+            let typei = icon_type.indexOf(props.goal.goalTags[i]);
+           // console.log(icon);
+        //console.log(icon_state);
+        
+      
+        if(icon_indexed[typei]>0){
+             newIcon= {
+            creatorId: props.goal.creatorId,
+            type: typei,
+            state: icon_indexed[typei]-1,
+        }
+        console.log("decrease 2")
+        post("/api/icons", newIcon);
+        }
+        }
+        
+    }
+    
+    /*var today = new Date();
+    if(today.getSeconds() == 0 ){//&& today.getHours()==0 &&  today.getMinutes()==0  && today.getSeconds()==0){
+        props.achievement=0;
+        let newAchievement = {
+            creatorId: props.goal.creatorId,
+            goalId: props.goal.goalId,
+            achievement: 0,
+            
+        }
+        post("/api/updateachievement", newAchievement);*/
 
     const checkboxes = [];
     for (var i=0; i < props.goal.frequency; i++) {
@@ -92,11 +117,19 @@ const SingleGoal = (props) => {
             setIsChecked(!isChecked);
             update(!isChecked);   
         }
-
+        console.log(checkboxes);
        checkboxes.push( <input key={i} checked={isChecked} type="checkbox" onChange={handleOnChange}/>)
     
     }
-
+    
+    newAchievement = {
+            creatorId: props.goal.creatorId,
+            goalId: props.goal.goalId,
+            achievement: props.goal.achievement
+            
+        }
+    console.log("posted");
+    //post("/api/updateachievement", newAchievement);   
     return (
         <div className="Goal-container">
             <div className="flex-container">
