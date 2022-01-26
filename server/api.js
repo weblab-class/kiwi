@@ -248,6 +248,38 @@ router.post("/message", auth.ensureLoggedIn, (req, res) => {
   }
 });
 
+router.post("/icons", (req, res) => {
+  const newIcon = {
+    creatorId: req.body.creatorId,
+    type: req.body.type,
+    state: req.body.state,
+  }
+  console.log(req.body);
+  //newIcon.save().then((icon) => res.send(icon));
+  Icons.updateOne({creatorId: req.body.creatorId, type: req.body.type},
+    newIcon, {"upsert": true, "useFindAndModify":false}).then(replacedDocument => {
+    if(replacedDocument) {
+      console.log(`Successfully replaced the following document: ${replacedDocument}.`)
+    } else {
+      console.log("No document matches the provided query.")
+    }
+  });
+  /*Icons.findOne( {creatorId: req.body.creatorId, type: req.body.type}).then((icon) => {
+    icon.state = req.body.state  ;
+    icon.save();
+  });*/
+  //newIcon.save().then((icons) => res.send(icons));
+ });
+ 
+ router.post("/updatestate", (req, res) => {
+  console.log("BODY", req.body);
+  Icons.findOne( {creatorId: req.body.creatorId, type: req.body.type}).then((icon) => {
+      icon.state = req.body.state ;
+      icon.save();
+  });
+ });
+ 
+
 router.get("/activeUsers", (req, res) => {
   res.send({ activeUsers: socketManager.getAllConnectedUsers() });
 });
