@@ -60,6 +60,11 @@ class SideBar extends Component {
              profile
            </div>
          )}</div>
+          {/* <div>{this.props.userId && (
+           <Link to={`/friends/${this.props.userId}`} className="SideBar-link">
+             friends
+           </Link>
+         )}</div> */}
        </div>
       
      </nav>

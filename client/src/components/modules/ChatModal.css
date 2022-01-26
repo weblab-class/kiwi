@@ -6,25 +6,26 @@
   color: #fff;
 }
 
-.btn-primary {
-  padding: 10px 10px;
+.btn-link-dark {
+  /* padding: 10px 10px; */
   /* position: absolute;
   top: 30px;
   left: 1000px; */
-  margin: 0% 0% 0% 90%;
-  line-height: 100px;
+  margin: 0% 0% 0% 0%;
+  line-height: 30px;
   display: flex;
   text-align: center;
   justify-content: center;
-  height: 130px;
-  width: 130px;
-  background-color: black;
-  border-color: #000;
-  border-radius: 70px;
-  font-size: 100px;
+  height: 50px;
+  width: 150px;
+  background-color: white;
+  border-color: white;
+  border-radius: 40px;
+  font-size: 15px;
 }
 
-.btn-primary:hover {
+.btn-link-dark:hover {
+  text-align: left;
   background-color: #99d98c;
   border-color: #99d98c;
 }
@@ -42,3 +43,11 @@
 .spacing {
   padding: 20px;
 }
+
+.modal-header-primary {
+  background-color: #99d98c;
+}
+
+/* .modal-backdrop {
+  opacity: 0.05 !important;
+} */

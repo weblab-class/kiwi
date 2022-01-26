@@ -1,0 +1,35 @@
+.SingleUser-container {
+  background: var(--white);
+  /* border-radius: var(--xs); */
+  /* padding: var(--m) var(--l); */
+  margin-bottom: var(--s);
+}
+
+/* .SingleUser-container:hover {
+  background: #99d98c;
+} */
+
+/* .SingleUser-container--active {
+  background: var(--grey);
+} */
+
+.Friends-title {
+  margin: 0% 0% 0% 0%;
+  margin-bottom: 20px;
+}
+
+.Online {
+  width: 10px;
+  height: 10px;
+  background: #99d98c;
+  border-radius: 10px;
+  line-height: 100px;
+  margin-bottom: 7px;
+  box-shadow: 0px 0px 3px 3px #99d98c;
+  margin-right: 5px;
+}
+
+.ChatList-name {
+  display: flex;
+  align-items: center;
+}

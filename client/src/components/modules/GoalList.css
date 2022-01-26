@@ -14,7 +14,7 @@
   vertical-align: center;
   padding: 10px 10px 10px 10px;
   margin: 10px 10px 10px 10px;
-  border-style: solid;
+  border-style: solid white;
   border-radius: 25px;
   background-color: #fff;
   height: 70px;
@@ -30,29 +30,29 @@
   background-color: #000;
   color: white;
   font-size: 30px;
-  position: absolute;
+  /* position: absolute;
   top: 110px;
-  left: 1150px;
+  left: 1150px; */
 }
 
 .Modal {
-  position: absolute;
+  /* position: absolute;
   width: 30px;
   left: 110px;
-  top: 60px;
+  top: 60px; */
   border-radius: 90px;
 }
 
 .Outer-Box {
-  position: absolute;
+  /* position: absolute;
   left: 1000px;
-  top: 250px;
+  top: 250px; */
   display: flex;
   flex-direction: column;
   margin: 5px;
   padding: 5px;
   border: solid black;
-  background-color: black;
+  background-color: white;
   width: 350px;
   height: 300px;
   overflow-y: auto;
@@ -101,7 +101,7 @@ input[type="checkbox"] + label::before {
   background: #000;
 } */
 
-.checkbox-container input[type="checkbox"] {
+/* .checkbox-container input[type="checkbox"] {
   cursor: pointer;
   opacity: 0;
 }
@@ -111,6 +111,24 @@ input[type="checkbox"] + label::before {
   width: 1em;
   height: 1em;
   border: 0.05em solid black;
+} */
+
+.goal-container-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.goal-title {
+  margin-bottom: 10px;
+}
+
+.checkboxes-container {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .goal-container-inner {

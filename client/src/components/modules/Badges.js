@@ -17,6 +17,9 @@ const customStyles = {
       transform: 'translate(-50%, -50%)',
       height: '500px', // <-- This sets the height
       overlfow: 'scroll' // <-- This tells the modal to scrol
+    },
+    button : {
+      borderRadius: '25px' 
     }
   };
 
@@ -37,7 +40,9 @@ class Badges extends React.Component {
     render() {
         return (
             <div>
-                <Button variant="secondary" onClick={()=>{this.handleModal()}}>badges</Button>
+                <div className="Badges-Center">
+                <Button variant="secondary" style={customStyles.button} onClick={()=>{this.handleModal()}}>badges</Button>
+                </div>
                 <Modal 
                     show={this.state.show} 
                     onHide={()=>this.handleModal()}

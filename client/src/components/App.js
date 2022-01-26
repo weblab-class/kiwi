@@ -6,14 +6,15 @@ import Profile from "./pages/Profile.js";
 import Feed from "./pages/Feed.js";
 
 import SideBar from "./modules/SideBar.js";
+import Friends from "./pages/Friends.js";
 import "../utilities.css";
-
 import "./App.css";
 import { socket } from "../client-socket.js";
-
 import { get, post } from "../utilities";
-
 import 'foundation-sites/dist/css/foundation.min.css';
+import Chatbook from "./modules/Chatbook.js";
+import Chat from "./modules/Chat.js";
+
 
 
 /**
@@ -58,20 +59,20 @@ import 'foundation-sites/dist/css/foundation.min.css';
     return (
   
       <>
-      <div className="App-container u-flex">
-        <div className="b1 u-flexColumn">
-          <SideBar handleLogin={this.handleLogin}
-                handleLogout={this.handleLogout}
-                userId={this.state.userId} />
-        </div>
-        <div className="u-flexColumn">
-          <Router>
-            <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
-            <Profile path="/profile/:userId" myUserId={this.state.userId} />
-            <Feed path ="/friends/:userId" userId={this.state.userId}/>
-            <NotFound default />
-          </Router>
-        </div>
+      <div className="App-container">
+      <div className="b1">
+      <SideBar handleLogin={this.handleLogin}
+            handleLogout={this.handleLogout}
+            userId={this.state.userId} />
+      </div>
+      <div>
+        <Router>
+          <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
+          <Profile path="/profile/:userId" />
+          <Friends path="/friends/:userId" userId={this.state.userId} />
+          <NotFound default />
+        </Router>
+       </div>
        </div>
       </>
     );

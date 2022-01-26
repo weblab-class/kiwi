@@ -19,6 +19,11 @@ const customStyles = {
       transform: 'translate(-50%, -50%)',
       height: '500px', // <-- This sets the height
       overlfow: 'scroll' // <-- This tells the modal to scrol
+      
+    },
+      button : {
+          borderRadius: '70px' 
+
     }
   };
 
@@ -39,7 +44,11 @@ class Modals extends React.Component {
     render() {
         return (
             <div>
-                <Button variant="primary" onClick={()=>{this.handleModal()}}>+</Button>
+                <div>
+                <Button variant="primary" style={customStyles.button} onClick={()=>{this.handleModal()}}>+</Button>
+                </div>
+                <div className="spacing">
+                </div>
                 <Modal 
                     show={this.state.show} 
                     onHide={()=>this.handleModal()}

@@ -151,6 +151,7 @@ const GoalInput = (props) => {
             <p>
             <div>
             <button
+                style={{borderRadius: '15px'}}
                 type="submit"
                 className="Submit-button"
                 value="Submit"

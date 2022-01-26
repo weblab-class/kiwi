@@ -8,19 +8,19 @@
 
 .btn-secondary {
   /* padding: 50px 50px; */
-  position: absolute;
+  /* position: absolute;
   top: 600px;
-  left: 1080px;
-  line-height: 80px;
+  left: 1080px; */
+  line-height: 50px;
   display: flex;
   text-align: center;
   justify-content: center;
-  height: 90px;
-  width: 200px;
+  height: 60px;
+  width: 170px;
   background-color: #000;
   border-color: #000;
   border-radius: 40px;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .btn-secondary:hover {
@@ -36,4 +36,12 @@
 
 .checkboxes {
   padding: 10px;
+}
+
+[type="dswxdsewdxesa`w  12343button"] {
+  border-radius: 100px;
+}
+
+.Badges-Center {
+  margin: 15% 0% 0% 25%;
 }
