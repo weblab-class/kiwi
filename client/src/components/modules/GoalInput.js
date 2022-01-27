@@ -89,6 +89,8 @@ const GoalInput = (props) => {
         //console.log("LIST of GOALS", goals);
         return goals.length + 1;
     }
+
+    
     
 
     const addGoal = async () => {
@@ -110,8 +112,21 @@ const GoalInput = (props) => {
         post("/api/goal", NewGoal).then((goal) => {
             console.log("*****", props.addNewGoal)
             props.addNewGoal(goal);
-
         });
+
+        let types = tagValues(tags);
+        const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core'];
+        for (let i = 0; i<types.length; i++){
+            const NewIcon= {
+            creatorId: props.userId,
+            type: icon_type.indexOf(types[i]),
+            state:0,
+        }  
+          console.log(NewIcon);
+          post(`/api/icons`, NewIcon);
+        }
+ 
+
       };
       
     return (

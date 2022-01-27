@@ -18,9 +18,9 @@ const Social = (props) => {
           <Feed userId = {props.userId}></Feed>
         </div>
 
-        <div>
+        {/* <div>
           <FriendsChat userId = {props.userId} />
-        </div>
+        </div> */}
       </div>
 
     </>

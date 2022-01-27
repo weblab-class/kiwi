@@ -1,7 +1,11 @@
 .StoriesList {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
   height: 650px;
-  overflow-y: auto;
+  width: 1280px;
+  overflow: scroll;
 }
 
 .Card-container {
@@ -9,19 +13,19 @@
   border-radius: var(--xs);
   border: 2px solid black;
   margin-top: var(--m); */
-  width: 15%;
+  width: 50%;
 
   color: #000;
   border: 2px solid black;
   font-size: 20px;
   padding: 4px !important;
   border-radius: 15px;
-  margin: 15px;
+  margin-bottom: 100px;
 }
 
-.Card-container:first-of-type {
+/* .Card-container:first-of-type {
   margin-top: var(--l);
-}
+} */
 
 .Card-story,
 .Card-storyUser {
@@ -113,3 +117,9 @@
     "pic name"
     "pic tags";
 } */
+
+.Social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -17,8 +17,10 @@ class SideBar extends Component {
  
  render() {
    return (
-/*<div><img src={logo} alt="logo.png" /></div>*/
      <nav className="SideBar-linkContainer">
+      <div>
+        <img src={logo} alt="logo.png" />
+      </div>
  
       <div className="u-flexColumn u-flex-alignCenter">
       
@@ -28,9 +30,12 @@ class SideBar extends Component {
            </Link>
          )}</div>
         
-         <div><Link to={`/social/${this.props.userId}`} className="SideBar-link">
-           social
-         </Link></div>
+         <div>{this.props.userId && (
+              <Link to={`/social/${this.props.userId}`} className="SideBar-link">
+                social
+              </Link>
+         )}</div>
+
          <div>{this.props.userId ? (
            <GoogleLogout
              clientId={GOOGLE_CLIENT_ID}
@@ -57,12 +62,14 @@ class SideBar extends Component {
              profile
            </div>
          )}</div>
-          {/* <div>{this.props.userId && (
-           <Link to={`/friends/${this.props.userId}`} className="SideBar-link">
-             friends
-           </Link>
-         )}</div> */}
-       </div>
+
+       <div>
+              <Link to={`/about/`} className="SideBar-link">
+                about
+              </Link>
+      </div>
+
+      </div>
       
      </nav>
    );

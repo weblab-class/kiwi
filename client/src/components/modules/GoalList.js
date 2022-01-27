@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { get, post } from "../../utilities";
 import "../../utilities.css";
 import GoalInput from "./GoalInput"; 
+import { Link, navigate } from "@reach/router";
 import Modal from "./Modal.js";
 import Badges from "../modules/Badges.js";
 import "./GoalList.css";
@@ -9,6 +10,7 @@ import SingleGoal from "./SingleGoal";
 
 const GoalList = (props) => {
     const [goals, setGoals] = useState([]);
+    const [icons, setIcons] = useState([]);
 
     const addNewGoal = (goalObj) => {
         {
@@ -22,6 +24,10 @@ const GoalList = (props) => {
         //console.log("PROPS, USERID", props.userId);
         console.log("GOALS LIST", goals);
         });
+
+        get("/api/icons", { creatorId: props.userId }).then((icons) => {
+            setIcons(icons);});
+        
       }, []);
 
     return (
@@ -31,20 +37,20 @@ const GoalList = (props) => {
                 <Modal 
                     addNewGoal={addNewGoal} 
                     userId={props.userId}></Modal>
-             </div>
-            <div className="Outer-Box">
-            {goals.map((goal, i) => (
-                <SingleGoal
-                    userId = {props.userId}
-                    key={i}
-                    goal = {goal}
-                />
-            ))} 
-            <div>
             </div>
-        </div>
-        <Badges addNewGoal={addNewGoal} 
-                    userId={props.userId}/>
+                <div className="Outer-Box">
+                    {goals.map((goal, i) => (
+                        <SingleGoal
+                            userId = {props.userId}
+                            key={i}
+                            goal = {goal}
+                            icons = {icons}
+                        />
+                    ))} 
+                <div>
+                </div>
+
+            </div>
         </nav>
 
     );

@@ -5,6 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
 import SideBar from "./modules/SideBar.js";
 import Social from "./pages/Social.js";
+import About from "./pages/About.js";
 import "../utilities.css";
 import "./App.css";
 import { socket } from "../client-socket.js";
@@ -67,6 +68,7 @@ import 'foundation-sites/dist/css/foundation.min.css';
           <Skeleton path="/dashboard/:userId" userId={this.state.userId}/>
           <Profile path="/profile/:userId" myUserId = {this.state.userId}/>
           <Social path="/social/:userId" userId={this.state.userId} />
+          <About path = "/about"/>
           <NotFound default />
         </Router>
        </div>

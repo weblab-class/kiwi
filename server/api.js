@@ -15,6 +15,7 @@ const Goals = require("./models/goals");
 const Story = require("./models/story");
 const Comment = require("./models/comment");
 const Message = require("./models/message");
+const Icons = require("./models/icons");
 
 // import authentication library
 const auth = require("./auth");
@@ -127,11 +128,8 @@ router.get("/goalId", (req, res) => {
 
 router.post("/updateachievement", (req, res) => {
   console.log("BODY", req.body);
-  Goals.findOne( {creatorId: req.body.creatorId, goalId: req.body.goalId}).then((goal) => {
-      goal.achievement = req.body.achievement  ;
-      goal.save();
-  });
-});
+  Goals.updateOne( {creatorId: req.body.creatorId, goalId: req.body.goalId}, {achievement:req.body.achievement}
+);});
 
 router.post("/story", auth.ensureLoggedIn, (req, res) => {
   const newStory = new Story({
@@ -270,6 +268,12 @@ router.post("/icons", (req, res) => {
   });*/
   //newIcon.save().then((icons) => res.send(icons));
  });
+
+ router.post("/restartachievement", (req, res) => {
+  console.log("BODY", req.body);
+  Goals.updateMany( {creatorId: req.query.creatorId}, {achievement:0});
+ });
+ 
  
  router.post("/updatestate", (req, res) => {
   console.log("BODY", req.body);
@@ -283,6 +287,13 @@ router.post("/icons", (req, res) => {
 router.get("/activeUsers", (req, res) => {
   res.send({ activeUsers: socketManager.getAllConnectedUsers() });
 });
+
+router.get("/icons", (req, res) => {
+  Icons.find({creatorId: req.query.creatorId}).then((icons) => {
+    res.send(icons);
+  });
+ });
+ 
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

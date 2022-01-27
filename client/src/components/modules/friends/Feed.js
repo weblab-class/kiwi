@@ -3,6 +3,7 @@ import {get} from "../../../utilities"
 import Card from "./Card.js";
 import NewStoryModal from "./NewStoryModal.js";
 import Filter from "./Filter.js";
+import FriendsChat from "../../modules/FriendsChat.js";
 import "../../../utilities.css";
 
 /**
@@ -67,12 +68,15 @@ const Feed = (props) => {
   }
   return (
     <> 
-      <div style = {{width: '5%'}}>
+      <div style = {{width: '30%'}}>
         <Filter handleChange = {handleChange} value = {filters}/>
       </div>
       {props.userId && <NewStoryModal addNewStory={addNewStory} />}
+      <div className="Social">
       <div className = "StoriesList">
         {storiesList}
+      </div>
+      <FriendsChat userId = {props.userId} />
       </div>
     </>
   );

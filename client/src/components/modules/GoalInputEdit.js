@@ -48,7 +48,22 @@ const GoalInputEdit = (props) => {
             setFrequency({value: goal[0].frequency.toString(), label: goal[0].frequency.toString()})
             setMinimum({value: goal[0].minimum.toString(), label: goal[0].minimum.toString()})
             }
+
+            
         )}
+
+        let types = tagValues(tags);
+        const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core'];
+        for (let i = 0; i<types.length; i++){
+            const NewIcon= {
+            creatorId: props.userId,
+            type: icon_type.indexOf(types[i]),
+            state:-1,
+        }  
+            console.log("icon", NewIcon);
+            post(`/api/icons`, NewIcon);
+        }
+
         });
     }, []);
 
@@ -87,7 +102,19 @@ const GoalInputEdit = (props) => {
         console.log("updating")
         post("/api/editGoal", NewGoal).then(() => {
             window.location.reload()
-        })     
+        }) 
+        let types = tagValues(tags);
+        const icon_type = ['hand','lungs','heart','brain','misc','eyes','legs','biceps','core'];
+        for (let i = 0; i<types.length; i++){
+            const NewIcon= {
+            creatorId: props.userId,
+            type: icon_type.indexOf(types[i]),
+            state:-1,
+        }  
+            console.log(NewIcon);
+            post(`/api/icons`, NewIcon);
+        }
+    
       };
       
     return (

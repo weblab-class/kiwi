@@ -1,0 +1,7 @@
+.Container {
+  height: 100vh;
+  width: 80vw;
+  padding-left: 100px;
+  text-align: center left;
+  font: 12px;
+}

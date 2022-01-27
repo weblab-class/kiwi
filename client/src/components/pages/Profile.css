@@ -55,7 +55,7 @@
   margin: 15px;
   padding: 25px;
   /* border: solid black; */
-  background-color: rgb(55, 200, 211);
+  background-color: black;
   width: 90%;
   height: 90%;
   overflow-y: auto;
@@ -87,4 +87,5 @@
   color: white;
   font-size: 16px;
   text-align: center;
+  justify-content: flex-start;
 }
